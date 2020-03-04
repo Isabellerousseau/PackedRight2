@@ -19,26 +19,26 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
+    @order = policy_scope(Order).find(params[:id])
     authorize @order
   end
 
   def update
-    @order = Order.find(params[:id])
+    @order = policy_scope(Order).find(params[:id])
     authorize @order
     @order.update(order_params)
     redirect_to root
   end
 
   def destroy
-  @order = Order.find(params[:id])
+  @order = policy_scope(Order).find(params[:id])
   authorize @order
   @order.destroy
   # redirect_to root
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = policy_scope(Order).find(params[:id])
     authorize @order
   end
 end
