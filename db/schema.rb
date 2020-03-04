@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2020_04_03_184724) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.date "date"
     t.integer "status"
     t.integer "category"
     t.integer "weight"
@@ -50,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_04_03_184724) do
     t.string "drop_off"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time "pickup_time"
+    t.boolean "now"
     t.index ["driver_id"], name: "index_orders_on_driver_id"
     t.index ["parcel_id"], name: "index_orders_on_parcel_id"
     t.index ["user_id"], name: "index_orders_on_user_id"

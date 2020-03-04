@@ -12,6 +12,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user = current_user
+    @order.category = @order.parcel.category
+    @order.weight = @order.parcel.weight
+    @order.fragile = @order.parcel.fragile
     authorize @order
     if @order.save
       redirect_to order_path(@order)
