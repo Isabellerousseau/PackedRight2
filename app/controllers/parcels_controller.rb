@@ -16,7 +16,6 @@ class ParcelsController < ApplicationController
   end
 
   def create
-    binding.pry
     @parcel = Parcel.new(parcel_params)
     @parcel.user = current_user
     authorize @parcel
