@@ -29,6 +29,10 @@ Order.create(id: 1, status: nil, category: 0, weight: 1, fragile: true, driver_i
 Order.create(id: 2, status: nil, category: 1, weight: 30, fragile: true, driver_id: nil, user_id: 2, parcel_id: 2, pickup: "Utrecht", drop_off: "Dordrecht", created_at: "2020-04-04 13:04:21", updated_at: "2020-04-04 13:04:21", pickup_time: nil, now: nil)
 Order.create(id: 3, status: nil, category: 2, weight: 60, fragile: true, driver_id: nil, user_id: 3, parcel_id: 3, pickup: "Amsterdam", drop_off: "Leiden", created_at: "2020-05-04 13:04:21", updated_at: "2020-05-04 13:04:21", pickup_time: nil, now: nil)
 
-Parcel.create(id: 4, name: "designer dress", weight: 1, category: "Bike", fragile: true, created_at: "2020-03-04 13:04:21", updated_at: "2020-03-04 13:04:21")
-Parcel.create(id: 4, name: "mini palmtree", weight: 100, category: "Car", fragile: true, created_at: "2020-04-04 13:04:21", updated_at: "2020-04-04 13:04:21")
-Parcel.create(id: 4, name: "painting", weight: 10, category: "Van", fragile: true, created_at: "2020-05-04 13:04:21", updated_at: "2020-05-04 13:04:21")
+Parcel.create(id: 1, name: "designer dress", weight: 1, category: "Bike", fragile: true, created_at: "2020-03-04 13:04:21", updated_at: "2020-03-04 13:04:21")
+Parcel.create(id: 2, name: "mini palmtree", weight: 100, category: "Car", fragile: true, created_at: "2020-04-04 13:04:21", updated_at: "2020-04-04 13:04:21")
+Parcel.create(id: 3, name: "painting", weight: 10, category: "Van", fragile: true, created_at: "2020-05-04 13:04:21", updated_at: "2020-05-04 13:04:21")
+
+Driver.create(id: 1, approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-03-04 13:29:54", updated_at: "2020-03-04 13:33:57", user_id: 1, address: "Overhoeksplein 2, Amsterdam", category: nil)
+Driver.create(id: 2, approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", user_id: 2, address: "Overhoeksplein 2, Amsterdam", category: nil)
+Driver.create(id: 3, approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", user_id: 3, address: "Overhoeksplein 2, Amsterdam", category: nil)
