@@ -68,8 +68,16 @@ class DriversController < ApplicationController
         lat: driver.latitude,
         lng: driver.longitude,
         infoWindow: render_to_string(partial: "drivers/info_window", locals: { driver: driver }),
-        image_url: helpers.asset_url('car.png')
+        image_url:
+          if driver.category == 'car'
+            helpers.asset_url('car.png')
+          elsif driver.category == 'bike'
+            helpers.asset_url('bike.png')
+          else
+            helpers.asset_url('bus.png')
+          end
       }
     end
   end
+
 end
