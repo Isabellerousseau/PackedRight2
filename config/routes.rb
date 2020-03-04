@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'deliveries/new'
   get 'deliveries/edit'
   get 'deliveries/show'
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users
   root to: 'pages#home'
 
   resources :parcels
