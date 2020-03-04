@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
       redirect_to order_path(@order)
     else
       render :new
+    end
   end
 
   def edit
