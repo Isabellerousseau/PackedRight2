@@ -5,7 +5,6 @@ class CreateDeliveries < ActiveRecord::Migration[5.2]
       t.float :latitude
       t.references :order, foreign_key: true
       t.integer :distance
-      t.monetize :price
 
       t.timestamps
     end

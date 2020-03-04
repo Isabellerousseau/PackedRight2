@@ -1,2 +1,3 @@
 class Driver < ApplicationRecord
+
 end

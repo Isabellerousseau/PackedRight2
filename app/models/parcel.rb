@@ -1,2 +1,3 @@
 class Parcel < ApplicationRecord
+
 end
