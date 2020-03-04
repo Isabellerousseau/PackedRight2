@@ -1,0 +1,36 @@
+<h1>Parcels#new</h1>
+<p>Find me in app/views/parcels/new.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+
+
+
+
+      <h1>Book A Ride!</h1>
+      <%= simple_form_for @parcel do |f| %>
+      <%= f.input :name, placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>
+      <%= f.input :weight %>
+      <%= f.input :category, collection: Parcel::CATEGORY %>
+      <%= f.input :fragile %>
+      <div class="btn btn-primary">
+        <%= f.button :submit %>
+      </div>
+      <% end %>
+      <% if @parcel.save %>
+      <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+        <span><strong>Yay!</strong> 🎉 you successfully added a new product.</span>
+        <a data-dismiss="alert" aria-label="Close">
+          <i class="fas fa-times"></i>
+        </a>
+      </div>
+      <% end %>
+
+      <%= link_to "back", root_path %>
+
+
+
+    </div>
+  </div>
+</div>

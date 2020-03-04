@@ -1,0 +1,8 @@
+<h1>Parcels#index</h1>
+<p>Find me in app/views/parcels/index.html.erb</p>
+
+<% @parcels.each do |parcel| %>
+  <% if policy(parcel).edit? %>
+    <%= link_to "Update", edit_parcel_path(parcel) %>
+  <% end %>
+<% end %>
