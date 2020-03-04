@@ -6,7 +6,7 @@ class ParcelsController < ApplicationController
   end
 
   def show
-    @parcel = policy_scope(Parcel).find(params[:id])
+    @parcel = Parcel.find(params[:id])
     authorize @parcel
   end
 
@@ -27,19 +27,19 @@ class ParcelsController < ApplicationController
   end
 
   def edit
-    @parcel = policy_scope(Parcel).find(params[:id])
+    @parcel = Parcel.find(params[:id])
     authorize @parcel
   end
 
   def update
-    @parcel = policy_scope(Parcel).find(params[:id])
+    @parcel = Parcel.find(params[:id])
     @parcel.update(parcel_params)
     authorize @parcel
     redirect_to parcels_path
   end
 
   def destroy
-    @parcel = policy_scope(Parcel).find(params[:id])
+    @parcel = Parcel.find(params[:id])
     authorize @parcel
     @parcel.destroy
     redirect_to parcels_path

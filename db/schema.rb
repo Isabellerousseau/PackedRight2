@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_184722) do
+ActiveRecord::Schema.define(version: 2020_04_03_184724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,15 @@ ActiveRecord::Schema.define(version: 2020_04_03_184722) do
   end
 
   create_table "drivers", force: :cascade do |t|
-    t.string "password"
     t.boolean "approved"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "address"
+    t.string "category"
+    t.index ["user_id"], name: "index_drivers_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -103,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_184722) do
   end
 
   add_foreign_key "deliveries", "orders"
+  add_foreign_key "drivers", "users"
   add_foreign_key "messages", "drivers"
   add_foreign_key "messages", "users"
   add_foreign_key "orders", "drivers"

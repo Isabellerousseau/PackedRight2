@@ -58,7 +58,7 @@ class DriversController < ApplicationController
   private
 
   def driver_params
-    params.require(:driver).permit(:name, :email, :phone_number, :address, :password)
+    params.require(:driver).permit(:address)
   end
 
   def set_markers

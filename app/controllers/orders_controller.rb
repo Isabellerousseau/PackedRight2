@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @order.build_parcel
     authorize @order
   end
 
@@ -15,31 +16,39 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to order_path(@order)
     else
+      p @order.errors
       render :new
     end
   end
 
   def edit
-    @order = policy_scope(Order).find(params[:id])
+    @order = Order.find(params[:id])
     authorize @order
   end
 
   def update
-    @order = policy_scope(Order).find(params[:id])
+    @order = Order.find(params[:id])
     authorize @order
     @order.update(order_params)
     redirect_to root
   end
 
   def destroy
-  @order = policy_scope(Order).find(params[:id])
+  @order = Order.find(params[:id])
   authorize @order
   @order.destroy
   # redirect_to root
   end
 
   def show
-    @order = policy_scope(Order).find(params[:id])
+    @order = Order.find(params[:id])
     authorize @order
   end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:pickup, :drop_off, parcel_attributes: [:name, :weight, :category, :fragile])
+  end
+
 end
