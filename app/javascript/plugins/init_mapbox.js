@@ -20,10 +20,10 @@ const addMarkersToMap = (map, markers) => {
     element.className = 'marker';
     element.style.backgroundImage = `url('${marker.image_url}')`;
     element.style.backgroundSize = 'contain';
-    element.style.width = '25px';
-    element.style.height = '25px';
+    element.style.width = '60px';
+    element.style.height = '60px';
 
-    new mapboxgl.Marker()
+    new mapboxgl.Marker(element)
     .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup) // add this
       .addTo(map);
@@ -38,7 +38,6 @@ const fitMapToMarkers = (map, markers) => {
 };
 
 const initMapbox = () => {
-  console.log('Maybe not...')
   if (mapElement) {
     const map = buildMap();
     const markers = JSON.parse(mapElement.dataset.markers);
