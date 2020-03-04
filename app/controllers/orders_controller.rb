@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:pickup, :drop_off, parcel_attributes: [:name, :weight, :category, :fragile])
+    params.require(:order).permit(:pickup, :drop_off, :pickup_time, parcel_attributes: [:name, :weight, :category, :fragile])
   end
 
 end

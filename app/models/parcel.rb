@@ -7,7 +7,7 @@ class Parcel < ApplicationRecord
   CATEGORY = %w[Bike Car Van].freeze
   enum category: CATEGORY
 
-  validates :name, :weight, :category, :fragile, presence: true
+  validates :name, :weight, :category, presence: true
   # validates :category, inclusion: { in: CATEGORY }
 end
 
