@@ -12,6 +12,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user = current_user
+    @order.category = @order.parcel.category
+    @order.weight = @order.parcel.weight
+    @order.fragile = @order.parcel.fragile
     authorize @order
     if @order.save
       redirect_to order_path(@order)
@@ -48,7 +51,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:pickup, :drop_off, parcel_attributes: [:name, :weight, :category, :fragile])
+    params.require(:order).permit(:pickup, :drop_off, :pickup_time, parcel_attributes: [:name, :weight, :category, :fragile])
   end
 
 end

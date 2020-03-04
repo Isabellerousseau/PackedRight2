@@ -10,6 +10,7 @@
       <%= simple_form_for @order do |f| %>
         <%= f.input :pickup %>
         <%= f.input :drop_off %>
+        <%= f.input :pickup_time, placeholder: 'When should we pick it up?' %>
         <%= f.fields_for :parcel do |pf| %>
           <%= pf.input :name, placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>
           <%= pf.input :weight %>
@@ -22,8 +23,6 @@
       <% end %>
 
       <%= link_to "back", root_path %>
-
-
 
     </div>
   </div>
