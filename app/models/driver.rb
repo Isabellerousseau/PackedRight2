@@ -7,7 +7,7 @@ class Driver < ApplicationRecord
 
 
   CATEGORY = %w[Bike Car Van].freeze
-  # enum category: CATEGORY
+  enum category: CATEGORY
 
   # validates :category, inclusion: { in: CATEGORY }
 
