@@ -1,8 +1,9 @@
- .positionmap{
- position: relative;
- }
+.positionmap {
+  position: relative;
+}
 
- .dropmenu{
+.dropdown-custom {
   position: absolute;
-  top: -497px;
- }
+  top: 5px;
+  left: 5px;
+}
