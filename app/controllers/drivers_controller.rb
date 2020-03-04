@@ -7,7 +7,7 @@ class DriversController < ApplicationController
   end
 
   def show
-    @driver = Driver.find(params[:id])
+    @driver = policy_scope(Driver).find(params[:id])
     authorize @driver
   end
 
@@ -29,19 +29,19 @@ class DriversController < ApplicationController
   end
 
   def edit
-    @driver = Driver.find(params[:id])
+    @driver = policy_scope(Driver).find(params[:id])
     authorize @driver
   end
 
   def update
-    @driver = Driver.find(params[:id])
+    @driver = policy_scope(Driver).find(params[:id])
     @driver.update(driver_params)
     authorize @driver
     redirect_to drivers_path
   end
 
   def destroy
-    @driver = Driver.find(params[:id])
+    @driver = policy_scope(Driver).find(params[:id])
     authorize @driver
     @driver.destroy
     redirect_to parcels_path
@@ -58,7 +58,7 @@ class DriversController < ApplicationController
   private
 
   def driver_params
-    params.require(:driver).permit(:name, :email, :phone_number, :address, :password, :rating, :current_longitude, :current_latitude)
+    params.require(:driver).permit(:name, :email, :phone_number, :address, :password)
   end
 
   def set_markers

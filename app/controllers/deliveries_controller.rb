@@ -9,12 +9,12 @@ class DeliveriesController < ApplicationController
   end
 
   def edit
-    @delivery = Delivery.find(params[:id])
+    @delivery = policy_scope(Delivery).find(params[:id])
     authorize @delivery
   end
 
   def show
-    @delivery = Delivery.find(params[:id])
+    @delivery = policy_scope(Delivery).find(params[:id])
     authorize @delivery
   end
 end
