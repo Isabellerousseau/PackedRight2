@@ -15,6 +15,7 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def destroy?
+    record.order.user == user
   end
 
 end

@@ -1,10 +1,6 @@
 class MessagesController < ApplicationController
  skip_after_action :verify_authorized
 
-  def index
-
-  end
-
   def new
     @message = Message.new
   end
@@ -25,6 +21,14 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    @message = Message.find(params[:id])
+    authorize @message
+
+    if @message.destroy
+      redirect_to order_path(params[:order_id])
+    else
+      render :new
+    end
   end
 
   private
