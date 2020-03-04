@@ -1,2 +1,27 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div
+class="positionmap"
+id="map"
+data-markers="<%= @markers.to_json %>"
+data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+>
+</div>
+<div class="dropdown dropdown-custom">
+  <button class="btn btn-secondary dropdown-toggle dropmenu" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Menu
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <button class="dropdown-item" type="button"><img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /> <%= current_user&.email %></button>
+    <button class="dropdown-item" type="button"><% if policy(Order).create? %><%= link_to "Your orders", orders_path %><% end %></button>
+    <button class="dropdown-item" type="button"></button>
+    <button class="dropdown-item" type="button"><%=link_to "Become a driver", new_driver_path %></button>
+    <button class="dropdown-item" type="button"><% if policy(User).edit? %><%= link_to "Update profile", edit_user_registration_path %><% end %></button>
+     <button class="dropdown-item" type="button"><%= link_to "Log-in/Sign-up",  user_session_path %></button>
+     <button class="dropdown-item" type="button"><%= link_to "Log-out",  destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you want to log-out?"}  %></button>
+  </div>
+</div>
+
+<div class="container">
+    <h1><%= @greet %><% if current_user %><%= current_user.email %></h1>
+  <% end %>
+</div>
+

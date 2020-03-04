@@ -58,7 +58,7 @@ class DriversController < ApplicationController
   private
 
   def driver_params
-    params.require(:driver).permit(:address)
+    params.require(:driver).permit(:address, :category)
   end
 
   def set_markers
@@ -68,8 +68,16 @@ class DriversController < ApplicationController
         lat: driver.latitude,
         lng: driver.longitude,
         infoWindow: render_to_string(partial: "drivers/info_window", locals: { driver: driver }),
-        image_url: helpers.asset_url('car.png')
+        image_url:
+          if driver.category == 'Car'
+            helpers.asset_url('car.png')
+          elsif driver.category == 'Bike'
+            helpers.asset_url('bike.png')
+          else
+            helpers.asset_url('bus.png')
+          end
       }
     end
   end
+
 end

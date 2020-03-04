@@ -10,7 +10,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    !!user
   end
 
   def show?
