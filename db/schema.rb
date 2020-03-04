@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_184724) do
+ActiveRecord::Schema.define(version: 2020_04_03_184725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_184724) do
     t.string "drop_off"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time "pickup_time"
-    t.boolean "now"
+    t.datetime "pickup_time"
     t.index ["driver_id"], name: "index_orders_on_driver_id"
     t.index ["parcel_id"], name: "index_orders_on_parcel_id"
     t.index ["user_id"], name: "index_orders_on_user_id"

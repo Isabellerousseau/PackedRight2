@@ -10,7 +10,6 @@
       <%= simple_form_for @order do |f| %>
         <%= f.input :pickup %>
         <%= f.input :drop_off %>
-        <%= f.input :now, as: :radio_buttons %>
         <%= f.input :pickup_time, placeholder: 'When should we pick it up?' %>
         <%= f.fields_for :parcel do |pf| %>
           <%= pf.input :name, placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>

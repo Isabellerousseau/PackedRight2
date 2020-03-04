@@ -36,3 +36,4 @@ Parcel.create(id: 3, name: "painting", weight: 10, category: "Van", fragile: tru
 Driver.create(id: 1, approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-03-04 13:29:54", updated_at: "2020-03-04 13:33:57", user_id: 1, address: "Overhoeksplein 2, Amsterdam", category: nil)
 Driver.create(id: 2, approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", user_id: 2, address: "Overhoeksplein 2, Amsterdam", category: nil)
 Driver.create(id: 3, approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", user_id: 3, address: "Overhoeksplein 2, Amsterdam", category: nil)
+
