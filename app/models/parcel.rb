@@ -11,4 +11,3 @@ class Parcel < ApplicationRecord
 end
 
 # instellen dat hij niet een driver MOET hebben meteen.
-
