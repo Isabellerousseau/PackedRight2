@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 offset-3">
+
+ <h1>Become a Driver!</h1>
+      <%= simple_form_for @driver do |f| %>
+      <%= f.input :name, placeholder: 'Enter your name please', error: 'Name is mandatory, please enter your name' %>
+      <%= f.input :email %>
+      <%= f.input :phone_number %>
+      <%= f.input :address%>
+        <div class="btn btn-primary">
+        <%= f.button :submit %>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
