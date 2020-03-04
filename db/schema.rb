@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_184724) do
+ActiveRecord::Schema.define(version: 2020_04_03_184725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,9 @@ ActiveRecord::Schema.define(version: 2020_04_03_184724) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
     t.index ["driver_id"], name: "index_messages_on_driver_id"
+    t.index ["order_id"], name: "index_messages_on_order_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -108,6 +110,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_184724) do
   add_foreign_key "deliveries", "orders"
   add_foreign_key "drivers", "users"
   add_foreign_key "messages", "drivers"
+  add_foreign_key "messages", "orders"
   add_foreign_key "messages", "users"
   add_foreign_key "orders", "drivers"
   add_foreign_key "orders", "parcels"
