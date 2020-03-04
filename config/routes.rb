@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :parcels
   resources :orders do
+    resources :messages, only: [:create]
     # resources :deliveries, only: [ :create]
     # resources :reviews, only: [:new, :create, :show]
   end
