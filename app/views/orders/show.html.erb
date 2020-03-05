@@ -1,4 +1,13 @@
 <h1>Orders#show</h1>
 <p>Find me in app/views/orders/show.html.erb</p>
 
-<% raise %>
+<div
+class="top"
+class="positionmap"
+id="map"
+data-markers="<%= @markers.to_json %>"
+data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+>
+
+
+<!-- SHOW PICKUP LOCATION AND THE ASSIGNED DRIVER IN MARKERS -->
