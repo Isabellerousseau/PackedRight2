@@ -9,5 +9,13 @@ data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
 
+<ul>
+  <% @order.messages.each do |message| %>
+    <li>
+      <%= message.content %>
+      <%= button_to "delete", order_message_path(@order, message), :method => :delete %>
+    </li>
+  <% end %>
+</ul>
+<%= render "messages/form" %>
 
-<!-- SHOW PICKUP LOCATION AND THE ASSIGNED DRIVER IN MARKERS -->

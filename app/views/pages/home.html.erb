@@ -10,7 +10,10 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     Menu
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button"><img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /> <%= current_user&.email %></button>
+    <button class="dropdown-item" type="button">
+      <%= cl_image_tag @photo, class: 'avatar-large' %>
+      <%= current_user&.name %>
+    </button>
     <button class="dropdown-item" type="button"><% if policy(Order).create? %><%= link_to "Your orders", orders_path %><% end %></button>
     <button class="dropdown-item" type="button"></button>
     <button class="dropdown-item" type="button"><%=link_to "Become a driver", new_driver_path %></button>
@@ -21,7 +24,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 </div>
 
 <div class="container">
-    <h1><%= @greet %><% if current_user %><%= current_user.email %></h1>
+    <h1><%= @greet %><% if current_user %><%= current_user.name %></h1>
   <% end %>
 </div>
 

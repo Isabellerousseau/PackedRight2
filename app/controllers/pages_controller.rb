@@ -4,6 +4,12 @@ class PagesController < ApplicationController
   def home
     set_markers
     @greet = greet
+
+    if current_user
+      @photo = current_user.photo.attached? ? current_user.photo.key : "no_avatar_qvedi0"
+    else
+      @photo = "no_avatar_qvedi0"
+    end
   end
 
   def greet
