@@ -55,4 +55,15 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:pickup, :drop_off, :pickup_time, parcel_attributes: [:name, :weight, :category, :fragile])
   end
 
+  def order_markers
+    @orders = policy_scope(Order)
+    @markers = @orders.map do |order|
+      {
+        lat: order.pickup.latitude,
+        lng: order.drop_off.longitude,
+        infoWindow: render_to_string(partial: "drivers/info_window", locals: { order: order }),
+      }
+    end
+  end
+
 end

@@ -4,6 +4,7 @@ id="map"
 data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
+
 </div>
 <div class="dropdown dropdown-custom">
   <button class="btn btn-secondary dropdown-toggle dropmenu" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -24,7 +25,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 </div>
 
 <div class="container">
-    <h1><%= @greet %><% if current_user %><%= current_user.name %></h1>
+    <h1><%= @greet %><% if current_user %> <%= current_user.name %></h1>
   <% end %>
 </div>
 

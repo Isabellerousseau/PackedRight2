@@ -1,2 +1,5 @@
-<h3><%= driver.user.name %></h3>
+<h6><%= driver.user.name %></h6>
+
+<% photo = driver.user.photo.attached? ? driver.user.photo.key : "no_avatar_qvedi0" %>
+<%= cl_image_tag photo %>
 
