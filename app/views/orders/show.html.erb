@@ -1,4 +1,11 @@
 <h1>Orders#show</h1>
 <p>Find me in app/views/orders/show.html.erb</p>
-
-<% raise %>
+<ul>
+  <% @order.messages.each do |message| %>
+    <li>
+      <%= message.content %>
+      <%= button_to "delete", order_message_path(@order, message), :method => :delete %>
+    </li>
+  <% end %>
+</ul>
+<%= render "messages/form" %>

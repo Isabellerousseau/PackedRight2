@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'messages/index'
+  get 'messages/new'
+  get 'messages/create'
+  get 'messages/destroy'
   get 'orders/index'
   get 'orders/new'
   get 'orders/create'
@@ -15,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :parcels
   resources :orders do
+    resources :messages, only: [:create, :destroy]
     # resources :deliveries, only: [ :create]
     # resources :reviews, only: [:new, :create, :show]
   end

@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(version: 2020_04_03_184725) do
     t.index ["user_id"], name: "index_drivers_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "driver_id"
+    t.bigint "user_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["driver_id"], name: "index_messages_on_driver_id"
+    t.index ["order_id"], name: "index_messages_on_order_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "status"
     t.integer "category"
@@ -119,6 +131,9 @@ ActiveRecord::Schema.define(version: 2020_04_03_184725) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "deliveries", "orders"
   add_foreign_key "drivers", "users"
+  add_foreign_key "messages", "drivers"
+  add_foreign_key "messages", "orders"
+  add_foreign_key "messages", "users"
   add_foreign_key "orders", "drivers"
   add_foreign_key "orders", "parcels"
   add_foreign_key "orders", "users"
