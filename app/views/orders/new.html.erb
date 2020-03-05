@@ -1,29 +1,18 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-6 offset-3">
-
-      <h1>Book A Ride!</h1>
-      <%= simple_form_for @order do |f| %>
-        <%= f.input :pickup %>
-        <%= f.input :drop_off %>
-        <%= f.input :pickup_time, placeholder: 'When should we pick it up?' %>
-        <%= f.fields_for :parcel do |pf| %>
-          <%= pf.input :name, placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>
-          <%= pf.input :weight %>
-          <%= pf.input :category, collection: Parcel::CATEGORY %>
-          <%= pf.input :fragile, as: :radio_buttons %>
-        <% end %>
-        <div class="btn btn-primary">
-          <%= f.button :submit %>
-        </div>
-      <% end %>
-
-      <%= link_to "back", root_path %>
-
-    </div>
-  </div>
+<div
+class="top"
+class="positionmap"
+id="map"
+data-markers="<%= @markers.to_json %>"
+data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+>
+<%= render 'shared/navbar-new' %>
 </div>
+
+<% render 'shared/dropdown-form-order' %>
+<% render 'shared/collapse-form' %>
+<%= render 'shared/collapse-accordion-form' %>
+
+<div class="display-flex justify-content-center m-3 p-3">
+<h3 class="cursive">Let us take care of your package!</h3>
+</div>
+

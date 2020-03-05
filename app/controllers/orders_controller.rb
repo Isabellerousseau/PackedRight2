@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.build_parcel
     authorize @order
+
+    set_markers
   end
 
   def create
@@ -17,7 +19,7 @@ class OrdersController < ApplicationController
     @order.fragile = @order.parcel.fragile
     authorize @order
     if @order.save
-      redirect_to order_path(@order)
+      redirect_to edit_order_path(@order)
     else
       p @order.errors
       render :new
@@ -53,6 +55,25 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:pickup, :drop_off, :pickup_time, parcel_attributes: [:name, :weight, :category, :fragile])
+  end
+
+  def set_markers
+    @drivers = policy_scope(Driver)
+    @markers = @drivers.map do |driver|
+      {
+        lat: driver.latitude,
+        lng: driver.longitude,
+        infoWindow: render_to_string(partial: "drivers/info_window", locals: { driver: driver }),
+        image_url:
+        if driver.category == 'Car'
+          helpers.asset_url('car.png')
+        elsif driver.category == 'Bike'
+          helpers.asset_url('bike.png')
+        else
+          helpers.asset_url('bus.png')
+        end
+      }
+    end
   end
 
 end

@@ -1,0 +1,31 @@
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link width100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Edit your order
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+
+        <%= simple_form_for @order do |f| %>
+        <%= f.input :pickup, :class => "placeholder-only" %>
+        <%= f.input :drop_off %>
+        <%= f.input :pickup_time, placeholder: 'When should we pick it up?' %>
+        <%= f.fields_for :parcel do |pf| %>
+        <%= pf.input :name, placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>
+        <%= pf.input :weight %>
+        <%= pf.input :category, collection: Parcel::CATEGORY %>
+        <%= pf.input :fragile, as: :radio_buttons %>
+        <% end %>
+        <div class="btn btn-primary">
+          <%= f.button :submit %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
