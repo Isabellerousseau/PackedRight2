@@ -1,5 +1,9 @@
+
+<div class="map-container">
+
+
 <div
-class="positionmap"
+class="positionmap top "
 id="map"
 data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
@@ -8,11 +12,16 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 <%= render 'shared/navbar-new' %>
 </div>
 
+<div>
+
 <% render 'shared/dropdown-form-order' %>
 <% render 'shared/collapse-form' %>
-<%= render 'shared/collapse-accordion-form' %>
-
-<div class="display-flex justify-content-center m-3 p-3">
-<h3 class="cursive">Let us take care of your package!</h3>
+<%= render 'shared/accordion-order' %>
 </div>
 
+
+</div>
+
+<!-- <div class="display-flex justify-content-center m-3 p-3">
+<h3 class="cursive">Let us take care of your package!</h3>
+</div> -->
