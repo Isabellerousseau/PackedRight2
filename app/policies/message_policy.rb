@@ -11,6 +11,7 @@ class MessagePolicy < ApplicationPolicy
 
   def create?
     # we want to allow messages to be created if the order belongs to the current user
+    # or if it belongs to the current driver
     record.order.user == user || record.driver == user.driver
   end
 

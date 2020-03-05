@@ -1,4 +1,4 @@
-<%= simple_form_for [@order, @message] do |f| %>
+<%= simple_form_for [@order, @message], html: { id: 'new-message-form' } do |f| %>
   <%= f.input :content, placeholder: 'Contact your driver here', label: false %>
   <%= f.button :submit %>
 <% end %>

@@ -1,7 +1,9 @@
 import "bootstrap";
 
 import { initMapbox } from '../plugins/init_mapbox';
-import { pullMessages } from '../plugins/pull_new_messages';
+import { pullMessages, createMessage, deleteMessage } from '../plugins/messages';
 
 initMapbox();
 pullMessages();
+createMessage();
+deleteMessage();
