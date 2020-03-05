@@ -53,40 +53,11 @@ class OrdersController < ApplicationController
 
   private
 
-   def categories
-    @drivers = policy_scope(Driver)
-    @category = params[:category]
-      if @category == "Car"
-        @drivers = Driver.where(category: "Car")
-      elsif @category == "Van"
-        @drivers = Driver.where(category: "Van")
-      else
-        @drivers = Driver.where(category: "Bike")
-      end
-    @markers = @drivers.map do |driver|
-      {
-        lat: driver.latitude,
-        lng: driver.longitude,
-        infoWindow: render_to_string(partial: "drivers/info_window", locals: { driver: driver }),
-
-        image_url:
-        if driver.category == 'Car'
-          helpers.asset_url('car.png')
-        elsif driver.category == 'Bike'
-          helpers.asset_url('bike.png')
-        else
-          helpers.asset_url('bus.png')
-        end
-      }
-      end
-    end
-
   def order_params
     params.require(:order).permit(:pickup, :drop_off, :pickup_time, parcel_attributes: [:name, :weight, :category, :fragile])
   end
 
-    def order_markers
-    categories
+  def order_markers
     coord = Geocoder.search(@order.drop_off).first
     coord2 = Geocoder.search(@order.pickup).first
     @markers = [{
@@ -99,7 +70,20 @@ class OrdersController < ApplicationController
         lng: coord2.longitude,
         image_url: helpers.asset_url('marker.png')
       }]
-    end
+      Driver.where(category: @order.category).each do |driver|
+        @markers << { lat: driver.latitude,
+          lng: driver.longitude,
+          image_url:
+            if driver.category == 'Car'
+              helpers.asset_url('car.png')
+            elsif driver.category == 'Bike'
+              helpers.asset_url('bike.png')
+            else
+              helpers.asset_url('bus.png')
+            end
+        }
+      end
+  end
 
     def driver_markers
     @drivers = policy_scope(Driver)

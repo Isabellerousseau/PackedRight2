@@ -5,6 +5,9 @@ class Order < ApplicationRecord
   belongs_to :parcel
   accepts_nested_attributes_for :parcel
 
+  CATEGORY = %w[Bike Car Van].freeze
+  enum category: CATEGORY
+
   has_many :messages
   # has_one :review
 
