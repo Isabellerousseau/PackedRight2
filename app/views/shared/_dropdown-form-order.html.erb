@@ -1,0 +1,26 @@
+
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Right-aligned menu
+  </button>
+  <div class="dropdown-menu dropdown-menu-right">
+
+      <%= simple_form_for @order do |f| %>
+        <%= f.input :pickup %>
+        <%= f.input :drop_off %>
+        <%= f.input :pickup_time, placeholder: 'When should we pick it up?' %>
+        <%= f.fields_for :parcel do |pf| %>
+          <%= pf.input :name, placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>
+          <%= pf.input :weight %>
+          <%= pf.input :category, collection: Parcel::CATEGORY %>
+          <%= pf.input :fragile, as: :radio_buttons %>
+        <% end %>
+        <div class="btn btn-primary">
+          <%= f.button :submit %>
+        </div>
+      <% end %>
+
+      <%= link_to "back", root_path %>
+
+  </div>
+</div>

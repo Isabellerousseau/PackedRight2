@@ -17,11 +17,11 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
-  def edit
-# as we go
+  def edit?
+    create?
   end
 
-  def update
-# as we go
+  def update?
+    !!user
   end
 end
