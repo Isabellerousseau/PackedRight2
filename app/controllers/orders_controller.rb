@@ -7,8 +7,7 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.build_parcel
     authorize @order
-
-    set_markers
+    driver_markers
   end
 
   def create
@@ -29,6 +28,7 @@ class OrdersController < ApplicationController
   def edit
     @order = Order.find(params[:id])
     authorize @order
+    order_markers
   end
 
   def update
@@ -53,17 +53,22 @@ class OrdersController < ApplicationController
 
   private
 
-  def order_params
-    params.require(:order).permit(:pickup, :drop_off, :pickup_time, parcel_attributes: [:name, :weight, :category, :fragile])
-  end
-
-  def set_markers
+   def categories
     @drivers = policy_scope(Driver)
+    @category = params[:category]
+      if @category == "Car"
+        @drivers = Driver.where(category: "Car")
+      elsif @category == "Van"
+        @drivers = Driver.where(category: "Van")
+      else
+        @drivers = Driver.where(category: "Bike")
+      end
     @markers = @drivers.map do |driver|
       {
         lat: driver.latitude,
         lng: driver.longitude,
         infoWindow: render_to_string(partial: "drivers/info_window", locals: { driver: driver }),
+
         image_url:
         if driver.category == 'Car'
           helpers.asset_url('car.png')
@@ -73,7 +78,46 @@ class OrdersController < ApplicationController
           helpers.asset_url('bus.png')
         end
       }
+      end
     end
+
+  def order_params
+    params.require(:order).permit(:pickup, :drop_off, :pickup_time, parcel_attributes: [:name, :weight, :category, :fragile])
   end
 
+    def order_markers
+    categories
+    coord = Geocoder.search(@order.drop_off).first
+    coord2 = Geocoder.search(@order.pickup).first
+    @markers = [{
+        lat: coord.latitude,
+        lng: coord.longitude,
+        image_url: helpers.asset_url('marker.png')
+      },
+       {
+        lat: coord2.latitude,
+        lng: coord2.longitude,
+        image_url: helpers.asset_url('marker.png')
+      }]
+    end
+
+    def driver_markers
+    @drivers = policy_scope(Driver)
+    @markers = @drivers.map do |driver|
+      {
+        lat: driver.latitude,
+        lng: driver.longitude,
+        infoWindow: render_to_string(partial: "drivers/info_window", locals: { driver: driver }),
+
+        image_url:
+        if driver.category == 'Car'
+          helpers.asset_url('car.png')
+        elsif driver.category == 'Bike'
+          helpers.asset_url('bike.png')
+        else
+          helpers.asset_url('bus.png')
+        end
+      }
+      end
+    end
 end
