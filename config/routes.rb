@@ -17,6 +17,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :orders do
+        resources :messages, only: [ :index ]
+      end
+    end
+  end
+
   resources :parcels
   resources :orders do
     resources :messages, only: [:create, :destroy]

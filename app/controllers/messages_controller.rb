@@ -12,7 +12,9 @@ class MessagesController < ApplicationController
     @message.order = @order
     @driver = @order.driver
     @message.driver = @driver
+
     authorize @message
+
     if @message.save
       redirect_to order_path(@order)
     else

@@ -1,6 +1,6 @@
 <h1>Orders#show</h1>
 <p>Find me in app/views/orders/show.html.erb</p>
-<ul>
+<ul id="message-list" data-order-id="<%= @order.id %>">
   <% @order.messages.each do |message| %>
     <li>
       <%= message.content %>
