@@ -68,7 +68,7 @@ class OrdersController < ApplicationController
        {
         lat: coord2.latitude,
         lng: coord2.longitude,
-        image_url: helpers.asset_url('marker.png')
+        image_url: helpers.asset_url('marker-red.png')
       }]
       Driver.where(category: @order.category).each do |driver|
         @markers << { lat: driver.latitude,
