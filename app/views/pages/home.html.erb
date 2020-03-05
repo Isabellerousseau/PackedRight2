@@ -14,6 +14,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       <%= cl_image_tag @photo, class: 'avatar-large' %>
       <%= current_user&.name %>
     </button>
+    <button class="dropdown-item" type="button"><%= link_to "New order",  orders_new_path %></button>
     <button class="dropdown-item" type="button"><% if policy(Order).create? %><%= link_to "Your orders", orders_path %><% end %></button>
     <button class="dropdown-item" type="button"></button>
     <button class="dropdown-item" type="button"><%=link_to "Become a driver", new_driver_path %></button>
