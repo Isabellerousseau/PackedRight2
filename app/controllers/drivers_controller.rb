@@ -60,6 +60,7 @@ class DriversController < ApplicationController
       true
     else
       false
+    end
   end
 
   def active?
