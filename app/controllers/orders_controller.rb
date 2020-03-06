@@ -123,6 +123,7 @@ class OrdersController < ApplicationController
             end
         }
       end
+    end
 
   def driver_marker(driver)
     if driver.category == 'Car'
