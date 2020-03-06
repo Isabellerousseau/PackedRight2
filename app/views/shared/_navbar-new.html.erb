@@ -1,20 +1,27 @@
-
 <div class="dropdown dropdown-custom">
-  <button class="btn btn-secondary dropdown-toggle dropmenu menu" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="btn btn-secondary dropdown-toggle dropmenu" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Menu
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button"><img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" /> <%= current_user&.email %></button>
+    <button class="dropdown-item" type="button">
+      <%= cl_image_tag @photo, class: 'avatar-large' %>
+      <%= current_user&.name %>
+    </button>
+    <button class="dropdown-item" type="button"><%= link_to "New order",  orders_new_path %></button>
     <button class="dropdown-item" type="button"><% if policy(Order).create? %><%= link_to "Your orders", orders_path %><% end %></button>
     <button class="dropdown-item" type="button"></button>
     <button class="dropdown-item" type="button"><%=link_to "Become a driver", new_driver_path %></button>
     <button class="dropdown-item" type="button"><% if policy(User).edit? %><%= link_to "Update profile", edit_user_registration_path %><% end %></button>
+
     <button class="dropdown-item" type="button">
       <% if user_signed_in? %>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you want to log-out?"}  %>
+      <div>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'btn btn-primary') %>
+      </div>
       <% else %>
-        <%= link_to 'Login/Sign-up', user_session_path %>
-      <% end %>
-    </button>
+      <div>
+        <%= link_to('Login/Sign-up', new_user_session_path, :class => 'btn btn-primary') %>
+      </div>
+      <% end %></button>
+    </div>
   </div>
-</div>

@@ -16,7 +16,11 @@ class DriverPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    !!user
+  end
+
+  def edit?
+    !!user
   end
 
   def destroy?
