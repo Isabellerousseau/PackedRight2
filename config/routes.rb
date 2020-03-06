@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  get 'messages/index'
-  get 'messages/new'
-  get 'messages/create'
-  get 'messages/destroy'
-
-  get 'deliveries/index'
-  get 'deliveries/new'
-  get 'deliveries/edit'
-  get 'deliveries/show'
 
   devise_for :users
   root to: 'pages#home'
