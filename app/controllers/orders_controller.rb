@@ -116,19 +116,6 @@ class OrdersController < ApplicationController
       image_url: driver_marker(order.driver)
     }]
     end
-      # Driver.where(category: @order.category).each do |driver|
-      #   @markers << { lat: driver.latitude,
-      #     lng: driver.longitude,
-      #     image_url:
-      #       if driver.category == 'Car'
-      #         helpers.asset_url('car.png')
-      #       elsif driver.category == 'Bike'
-      #         helpers.asset_url('bike.png')
-      #       else
-      #         helpers.asset_url('bus.png')
-      #       end
-        # }
-      # end
 
   def driver_marker(driver)
     if driver.category == 'Car'
