@@ -1,2 +1,28 @@
-<h1>Drivers#show</h1>
-<p>Find me in app/views/drivers/show.html.erb</p>
+<div class="map-container">
+
+<div
+class="positionmap top "
+id="map"
+data-markers="<%= @markers.to_json %>"
+data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+>
+<%= render 'shared/navbar-new' %>
+</div>
+
+<div>
+<%= render 'shared/accordion-drivers-requests' %>
+</div>
+</div>
+
+<!--
+set on the map markers that it shows the driver and the pickup and drop-off location of the order
+make addeventlistener for so the driver can let us know when he is: almost at the location//at the location//has safely dropped off the package.
+have the option that the driver putts him/herself on available! function!!! -->
+
+<!-- write the functions in orders controller and/or in drivers controller
+see the state of the order status.
+  write funtion to change and/or display status.
+create a drivers status so the same driver can't be booked twice!
+  write the functions to change the driver function
+when the order status is: delivered//finalized go to view delivered..
+  create view index for delivered -->
