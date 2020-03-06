@@ -2,6 +2,7 @@
 
 
 <div class="container mt-3">
+<%= render 'shared/navbar-new' %>
   <h1 class="mt-5 mb-5">All my orders</h1>
   <% current_user.orders.each do |order| %>
   <div class="card-product mt-2">
