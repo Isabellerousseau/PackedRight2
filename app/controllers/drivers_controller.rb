@@ -22,7 +22,7 @@ class DriversController < ApplicationController
     authorize @driver
 
     if @driver.save
-      redirect_to drivers_path
+      redirect_to root_path
     else
       render :new
     end
