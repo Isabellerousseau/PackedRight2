@@ -55,6 +55,18 @@ class DriversController < ApplicationController
     authorize @drivers
   end
 
+  def available?
+    if @driver.order == nil && @driver.active == true
+      true
+    else
+      false
+  end
+
+  def active?
+    #driver can set in their settings if they are active or not (add to update driver)
+    #toggle addEventListener?? js..
+  end
+
   private
 
   def driver_params
