@@ -13,12 +13,12 @@
 
 
         <%= simple_form_for @order do |f| %>
-        <%= f.input :pickup, label: false %>
-        <%= f.input :drop_off, label: false %>
+        <%= f.input :pickup, label: false, placeholder: 'Please enter the pickup location' %>
+        <%= f.input :drop_off, label: false, placeholder: 'Please enter the drop-off location' %>
         <%= f.input :pickup_time, label: false, placeholder: 'When should we pick it up?' %>
         <%= f.fields_for :parcel do |pf| %>
         <%= pf.input :name,label: false,  placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>
-        <%= pf.input :weight, label: false %>
+        <%= pf.input :weight, label: false, placeholder: 'Please enter the weight of your parcel' %>
         <%= pf.input :category, label: false, collection: Parcel::CATEGORY %>
         <%= pf.input :fragile, as: :boolean %>
         <% end %>

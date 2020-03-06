@@ -1,17 +1,21 @@
-<div
-class="top"
-class="positionmap"
-id="map"
-data-markers="<%= @markers.to_json %>"
-data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
->
-<%= render 'shared/navbar-new' %>
+<div class="map-container">
+
+  <div
+  class="top"
+  class="positionmap"
+  id="map"
+  data-show-route="1"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  >
+  <%= render 'shared/navbar-new' %>
 </div>
 
-<% render 'shared/dropdown-form-order' %>
-<% render 'shared/collapse-form' %>
-<%= render 'shared/accordion-edit-order' %>
+<div>
+  <%= render 'shared/accordion-messages' %>
 
+</div>
+</div>
 
 <div class="display-flex justify-content-center m-3 p-3">
   <h3 class="cursive">We are looking for your driver!</h3>

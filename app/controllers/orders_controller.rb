@@ -99,21 +99,23 @@ class OrdersController < ApplicationController
     coord = Geocoder.search(@order.drop_off).first
     coord2 = Geocoder.search(@order.pickup).first
     @markers = [{
-      lat: coord.latitude,
-      lng: coord.longitude,
-      image_url: helpers.asset_url('marker.png')
-    },
-    {
-      lat: coord2.latitude,
-      lng: coord2.longitude,
-      image_url: helpers.asset_url('marker-red.png')
-    },
-    {
+        lat: coord.latitude,
+        lng: coord.longitude,
+        image_url: helpers.asset_url('marker.png'),
+        is_start: true
+      },
+       {
+        lat: coord2.latitude,
+        lng: coord2.longitude,
+        image_url: helpers.asset_url('marker-red.png'),
+        is_end: true
+      },
+        {
       lat: order.driver.latitude,
       lng: order.driver.longitude,
       image_url: driver_marker(order.driver)
     }]
-  end
+    end
 
   def driver_marker(driver)
     if driver.category == 'Car'
