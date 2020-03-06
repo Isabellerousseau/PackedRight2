@@ -4,27 +4,11 @@ id="map"
 data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
-</div>
-<div class="dropdown dropdown-custom">
-  <button class="btn btn-secondary dropdown-toggle dropmenu" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Menu
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-    <button class="dropdown-item" type="button">
-      <%= cl_image_tag @photo, class: 'avatar-large' %>
-      <%= current_user&.name %>
-    </button>
-    <button class="dropdown-item" type="button"><%= link_to "New order",  orders_new_path %></button>
-    <button class="dropdown-item" type="button"><% if policy(Order).create? %><%= link_to "Your orders", orders_path %><% end %></button>
-    <button class="dropdown-item" type="button"></button>
-    <button class="dropdown-item" type="button"><%=link_to "Become a driver", new_driver_path %></button>
-    <button class="dropdown-item" type="button"><% if policy(User).edit? %><%= link_to "Update profile", edit_user_registration_path %><% end %></button>
-     <button class="dropdown-item" type="button"><%= link_to "Log-in/Sign-up",  user_session_path %></button>
-     <button class="dropdown-item" type="button"><%= link_to "Log-out",  destroy_user_session_path, method: :delete, data: {confirm: "Are you sure you want to log-out?"}  %></button>
-  </div>
+<%= render 'shared/navbar-new' %>
 </div>
 
+
 <div class="container">
-    <h1><%= @greet %><% if current_user %><%= current_user.name %></h1>
+    <h1 class="cursive"><%= @greet %><% if current_user %><%= current_user.name %></h1>
   <% end %>
 </div>
