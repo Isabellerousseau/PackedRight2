@@ -7,8 +7,7 @@
   <div class="card-product mt-2">
     <div class="card-product-infos">
       <ul class="listStyle">
-        <li><b><%= order.product.name %></b></li>
-        <li><%= "Date: #{order.date}"%></li>
+        <li><%= "Date: #{order.pickup_time}"%></li>
         <li><i><%= "Total price: € #{order.price}" %></i></li>
       </ul>
       <% if policy(order).destroy? %><%= link_to order_path(order.id), method: :delete, data: {confirm: "Are you sure you want to cancel this order?"} do%>

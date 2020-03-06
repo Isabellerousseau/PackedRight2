@@ -3,17 +3,12 @@ Rails.application.routes.draw do
   get 'messages/new'
   get 'messages/create'
   get 'messages/destroy'
-  get 'orders/index'
-  get 'orders/new'
-  get 'orders/create'
-  get 'orders/edit'
-  get 'orders/update'
-  get 'orders/destroy'
-  get 'orders/show'
+
   get 'deliveries/index'
   get 'deliveries/new'
   get 'deliveries/edit'
   get 'deliveries/show'
+
   devise_for :users
   root to: 'pages#home'
 

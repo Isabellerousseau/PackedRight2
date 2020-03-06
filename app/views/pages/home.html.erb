@@ -25,6 +25,6 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 </div>
 
 <div class="container">
-    <h1><%= @greet %><% if current_user %><%= current_user.name %></h1>
+    <h1><%= @greet %><% if current_user %><span id="user-name"><%= current_user.name.capitalize %></span></h1>
   <% end %>
 </div>
