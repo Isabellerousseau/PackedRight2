@@ -11,14 +11,12 @@
         <li><%= "Pickup: #{order.pickup}"%></li>
         <li><%= "Pickup time: #{order.pickup_time}"%></li>
         <li><%= "Drop-off: #{order.drop_off}"%></li>
-
       </ul>
       <% if policy(order).destroy? %><%= link_to order_path(order.id), method: :delete, data: {confirm: "Are you sure you want to cancel this order?"} do%>
       <i class="fas fa-trash-alt"></i>
       <% end %>
       <% end %>
       <div class="list mt-4">
-        <li><%#= link_to "Add a review for #{user.driver.name}",  new_order_review_path(driver)%></li>
       </div>
     </div>
   </div>
