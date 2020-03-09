@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   def index
     @orders = policy_scope(Order).order(created_at: :desc)
+    # @upcomingorder = Order.where(Time.zone.now < DateTime.current)
+    # @pastorder = Order.where(Time.zone.now >= DateTime.current).order(:desc)
   end
 
   def new
@@ -41,30 +43,30 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-  @order = Order.find(params[:id])
-  authorize @order
-  @order.destroy
-  # redirect_to root
-  end
-
-  def show
     @order = Order.find(params[:id])
-    @message = Message.new
-    order_show_markers(@order)
     authorize @order
-  end
+    @order.destroy
+  # redirect_to root
+end
+
+def show
+  @order = Order.find(params[:id])
+  @message = Message.new
+  order_show_markers(@order)
+  authorize @order
+end
 
 
-  private
+private
 
-  def order_params
-    params.require(:order).permit(:pickup, :drop_off, :pickup_time, :driver_id, parcel_attributes: [:name, :weight, :category, :fragile])
-  end
+def order_params
+  params.require(:order).permit(:pickup, :drop_off, :pickup_time, :driver_id, parcel_attributes: [:name, :weight, :category, :fragile])
+end
 
-  def select_driver(order)
-    order.driver = Driver.where(category: order.category).near(order.pickup).first
-    order.save
-  end
+def select_driver(order)
+  order.driver = Driver.where(category: order.category).near(order.pickup).first
+  order.save
+end
 
 # Sorry Isabelle
   # def order_markers
@@ -99,23 +101,23 @@ class OrdersController < ApplicationController
     coord = Geocoder.search(@order.drop_off).first
     coord2 = Geocoder.search(@order.pickup).first
     @markers = [{
-        lat: coord.latitude,
-        lng: coord.longitude,
-        image_url: helpers.asset_url('marker.png'),
-        is_start: true
-      },
-       {
-        lat: coord2.latitude,
-        lng: coord2.longitude,
-        image_url: helpers.asset_url('marker-red.png'),
-        is_end: true
-      },
-        {
+      lat: coord.latitude,
+      lng: coord.longitude,
+      image_url: helpers.asset_url('marker.png'),
+      is_start: true
+    },
+    {
+      lat: coord2.latitude,
+      lng: coord2.longitude,
+      image_url: helpers.asset_url('marker-red.png'),
+      is_end: true
+    },
+    {
       lat: order.driver.latitude,
       lng: order.driver.longitude,
       image_url: driver_marker(order.driver)
     }]
-    end
+  end
 
   def driver_marker(driver)
     if driver.category == 'Car'
