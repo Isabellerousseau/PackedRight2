@@ -8,6 +8,7 @@
   <div class="card-product mt-2">
     <div class="card-product-infos">
       <ul class="listStyle">
+        <%= @pastorder %>
         <li><b><%= order.parcel.name.capitalize %></b></li>
         <li><i><%= "Driver: #{order.driver.user.name}"%></i></li>
         <li><%= "Pickup: #{order.pickup.capitalize}"%></li>
