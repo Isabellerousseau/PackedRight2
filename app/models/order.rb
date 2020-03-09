@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   enum category: CATEGORY
 
   has_many :messages
-  # has_one :review
+  has_one :review
 
   geocoded_by :pickup
 
