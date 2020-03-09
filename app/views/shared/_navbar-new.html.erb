@@ -25,7 +25,7 @@
       </div>
       <% end %></button>
 
-
+    <% if current_user != nil %>
       <%  if current_user.driver != nil %>
       <div id="active", class="dropdown-item" type="button" >
         <% if current_user.driver&.active? %>
@@ -35,5 +35,7 @@
         <% end %>
       </div>
       <% end %>
+    <% end %>
+
     </div>
   </div>

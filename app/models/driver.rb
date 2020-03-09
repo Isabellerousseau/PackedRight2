@@ -16,7 +16,7 @@ class Driver < ApplicationRecord
   before_save :geocode, if: :will_save_change_to_address?
 
   def available?
-    if self.orders == nil && self.active == true
+    if self.orders == [] && self.active == true
       true
     else
       false
