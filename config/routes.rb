@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  patch 'drivers/active'
+  patch 'drivers/inactive'
 
   devise_for :users
   root to: 'pages#home'

@@ -1,4 +1,5 @@
 class DriversController < ApplicationController
+  skip_after_action :verify_authorized, only: [:active, :inactive]
   def index
     @drivers = policy_scope(Driver).order(created_at: :desc)
 
@@ -55,18 +56,27 @@ class DriversController < ApplicationController
     authorize @drivers
   end
 
-  def available?
-    if @driver.order == nil && @driver.active == true
-      true
-    else
-      false
+  def active
+    @driver = current_user.driver
+    @driver.active = true
+    @driver.save
+    respond_to do |format|
+      format.js
+    end
+  end
+    #driver can set in their settings if they are active or not (add to update driver)
+    #toggle addEventListener?? js..
+
+  def inactive
+    @driver = current_user.driver
+    @driver.active = false
+    @driver.save
+    respond_to do |format|
+      format.js
     end
   end
 
-  def active?
-    #driver can set in their settings if they are active or not (add to update driver)
-    #toggle addEventListener?? js..
-  end
+
 
   private
 

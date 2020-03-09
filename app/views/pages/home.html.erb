@@ -4,9 +4,8 @@ id="map"
 data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
-<%= render 'shared/navbar-new' %>
+  <%= render 'shared/navbar-new' %>
 </div>
-
 
 <div class="container">
     <h1 class="cursive"><%= @greet %><% if current_user %> <%= current_user.name %></h1>
