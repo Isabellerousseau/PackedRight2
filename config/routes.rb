@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'deliveries/new'
   get 'deliveries/edit'
   get 'deliveries/show'
+  patch 'drivers/active'
+  patch 'drivers/inactive'
   devise_for :users
   root to: 'pages#home'
 

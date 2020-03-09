@@ -127,6 +127,7 @@ class OrdersController < ApplicationController
     end
   end
 
+# @markers = @drivers.active?.map zoeiets?
   def driver_markers
     @drivers = policy_scope(Driver)
     @markers = @drivers.map do |driver|
