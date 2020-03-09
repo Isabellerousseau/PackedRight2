@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   resources :parcels
   resources :orders do
     resources :messages, only: [:create, :destroy]
+    resources :reviews, only: [:new, :create, :show]
     # resources :deliveries, only: [ :create]
-    # resources :reviews, only: [:new, :create, :show]
   end
   resources :drivers
   # resources :deliveries, only: [:index, :show]
