@@ -16,6 +16,7 @@
         <li><%= "Status: #{order.status}"%></li>
         <div>
           <% if order.review %>
+          <li><i><%= "Review: #{order.review.decription}" %></i></li>
           <%order.review.rating.to_i.times do %>
           <span class="glyphicon glyphicon-star"> <i class="fas fa-star"></i></span>
           <% end %>

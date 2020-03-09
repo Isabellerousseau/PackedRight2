@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     authorize @review
 
     if @review.save
-      redirect_to root_path
+      redirect_to orders_path
     else
       render :new
     end
