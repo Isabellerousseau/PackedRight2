@@ -22,8 +22,9 @@ class Order < ApplicationRecord
   after_create :notify_driver
 
   def notify_driver
-    ActionCable.server.broadcast("driver_#{self.driver.id}", message: {content: 'top!'})
+    ActionCable.server.broadcast("driver_#{self.driver.id}", message: {content: 'WORK'})
   end
 end
 # order has two reviews.... moest het dan has_many? of....
 # pickup location drop- off location
+# o = Order.create category: "Car", weight: 10, fragile: true, driver_id: 9, user_id: User.last.id, parcel_id: 15, pickup: "Amsterdam", drop_off: "Den Haag"
