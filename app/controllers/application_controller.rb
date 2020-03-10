@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
  before_action :authenticate_user!
-  include Pundit
+ include Pundit
 
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
   # end
 
   private
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
