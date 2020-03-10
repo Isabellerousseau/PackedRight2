@@ -1,21 +1,31 @@
-const pullMessages = () => {
-  const list = document.querySelector('#message-list')
+import { sendMessage } from "../channels/chat_channel"
 
-  if (list) {
-    setInterval(makeRequest, 2000)
+const form = document.querySelector('#new-message-form')
+const input = document.querySelector('#message_content')
+const list = document.querySelector('#message-list')
+const messageBox = document.querySelector('#messages-box')
+
+let orderId
+
+if (messageBox) {
+  orderId = messageBox.dataset.orderId
+}
+
+// load all messages on pageload
+const pullMessages = () => {
+  if (messageBox) {
+    fetch(`/api/v1/orders/${orderId}/messages`)
+      .then(res => res.json())
+      .then(messages => {
+        messages.forEach(showMessageToDom)
+      })
   }
 }
 
+// create new message
 const createMessage = () => {
-  const form = document.querySelector('#new-message-form')
-  const input = document.querySelector('#message_content')
-  const list = document.querySelector('#message-list')
-
-  if (list) {
-    const orderId = list.dataset.orderId
-
+  if (messageBox) {
     form.addEventListener("submit", (event) => {
-      // Do something (callback)
       event.preventDefault()
 
       fetch(`/api/v1/orders/${orderId}/messages`, {
@@ -30,9 +40,14 @@ const createMessage = () => {
           }
         })
       })
-      .then(response => input.value = "")
     });
   }
+}
+
+// function called by actioncable when a message is created
+const showMessageToDom = (message) => {
+  const list = document.querySelector('#message-list')
+  list.insertAdjacentHTML('beforeend', `<li> ${message.content} </li>`)
 }
 
 const deleteMessage = () => {
@@ -52,16 +67,6 @@ const deleteMessage = () => {
   }
 }
 
-const makeRequest = () => {
-  const list = document.querySelector('#message-list')
-  const orderId = list.dataset.orderId
+export { pullMessages, createMessage, deleteMessage, showMessageToDom }
 
-  fetch(`/api/v1/orders/${orderId}/messages`)
-  .then(response => response.json())
-  .then(messages => {
-    const html = messages.map(message => `<li> ${message.content} <button data-message-id="${message.id}" class="btn delete-btn btn-danger"> Delete </button></li>`).join('')
-    list.innerHTML = html
-  })
-}
 
-export { pullMessages, createMessage, deleteMessage }

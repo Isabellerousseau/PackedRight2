@@ -1,18 +1,11 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl';
-import MapboxDirections from '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions'
 
 const mapElement = document.getElementById('map');
 
 const buildMap = () => {
   const token = mapElement.dataset.mapboxApiKey;
   mapboxgl.accessToken = token;
-
-  const directions = new MapboxDirections({
-    accessToken: token,
-    unit: 'metric',
-    profile: 'mapbox/cycling'
-  })
 
   const map = new mapboxgl.Map({
     container: 'map',
@@ -21,7 +14,6 @@ const buildMap = () => {
   });
 
   return map
-  // map.addControl(directions, 'top-left');
 };
 
 const addMarkersToMap = (map, markers) => {
@@ -46,6 +38,9 @@ const addMarkersToMap = (map, markers) => {
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
+
+  console.log(markers)
+
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 3000 });
 };
