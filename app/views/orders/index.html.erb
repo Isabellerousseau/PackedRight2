@@ -8,9 +8,8 @@
   <div class="card-product mt-2">
     <div class="card-product-infos">
       <ul class="listStyle">
-        <%= @pastorder %>
         <li><b><%= order.parcel.name.capitalize %></b></li>
-        <li><i><%= "Driver: #{order.driver.user.name}"%></i></li>
+        <li><i><%= "Driver: #{order.driver ? order.driver.user.name : 'we are looking for a driver'}"%></i></li>
         <li><%= "Pickup: #{order.pickup.capitalize}"%></li>
         <li><%= "Pickup time: #{order.pickup_time}"%></li>
         <li><%= "Drop-off: #{order.drop_off.capitalize}"%></li>
@@ -22,9 +21,9 @@
           <span class="glyphicon glyphicon-star"> <i class="fas fa-star"></i></span>
           <% end %>
           <% order.review.blank_stars.to_i.times do %>
-          <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
           <% end %>
-          <% else %>
+          <% elsif order.driver %>
           <li><%= link_to "Add a review for #{order.driver.user.name}", new_order_review_path(order)%></li>
           <% end %>
         </div>
