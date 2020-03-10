@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :orders do
         resources :messages, only: [ :index, :create, :destroy ]
       end
+      resources :drivers, only: [:update]
     end
   end
 

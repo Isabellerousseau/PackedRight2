@@ -115,7 +115,8 @@ end
     {
       lat: order.driver.latitude,
       lng: order.driver.longitude,
-      image_url: driver_marker(order.driver)
+      image_url: driver_marker(order.driver),
+      is_driver: true
     }]
   end
 

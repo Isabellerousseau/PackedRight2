@@ -3,11 +3,14 @@ import mapboxgl from 'mapbox-gl';
 
 const mapElement = document.getElementById('map');
 
+let driverMarker
+let map
+
 const buildMap = () => {
   const token = mapElement.dataset.mapboxApiKey;
   mapboxgl.accessToken = token;
 
-  const map = new mapboxgl.Map({
+  map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
     zoom: 10
@@ -28,19 +31,20 @@ const addMarkersToMap = (map, markers) => {
     element.style.width = '50px';
     element.style.height = '50px';
 
-    new mapboxgl.Marker(element)
-    .setLngLat([ marker.lng, marker.lat ])
+    const currentMarker = new mapboxgl.Marker(element)
+      .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup) // add this
       .addTo(map);
-    });
+
+    if (marker.is_driver) {
+      driverMarker = currentMarker
+    }
+  });
 };
 
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
-
-  console.log(markers)
-
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 3000 });
 };
@@ -102,6 +106,14 @@ const drawRoute = (map, markers) => {
   });
 }
 
+const updateDriverOnMap = ({latitude, longitude}) => {
+  if (driverMarker) {
+    // driverMarker.setLngLat([latitude, longitude])
+    // driverMarker.addTo(map)
+    console.log('Doooone!')
+  }
+};
+
 const initMapbox = () => {
   if (mapElement) {
     const map = buildMap();
@@ -117,7 +129,7 @@ const initMapbox = () => {
   }
 };
 
-export { initMapbox };
+export { initMapbox, updateDriverOnMap };
 
 
 

@@ -5,6 +5,7 @@ class Driver < ApplicationRecord
   has_many :deliveries, through: :orders
   has_many :parcels, through: :orders
 
+  after_create :broadcast_through_action_cable
 
   CATEGORY = %w[Bike Car Van].freeze
   enum category: CATEGORY
@@ -22,4 +23,11 @@ class Driver < ApplicationRecord
       false
     end
   end
+
+   private
+
+  def broadcast_through_action_cable
+    ActionCable.server.broadcast("driver_#{self.driver.id}", location: self)
+  end
+
 end
