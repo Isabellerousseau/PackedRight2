@@ -11,6 +11,7 @@ if (messageBox) {
   orderId = messageBox.dataset.orderId
 }
 
+// load all messages on pageload
 const pullMessages = () => {
   if (messageBox) {
     fetch(`/api/v1/orders/${orderId}/messages`)
@@ -21,6 +22,7 @@ const pullMessages = () => {
   }
 }
 
+// create new message
 const createMessage = () => {
   if (messageBox) {
     form.addEventListener("submit", (event) => {
@@ -42,9 +44,10 @@ const createMessage = () => {
   }
 }
 
+// function called by actioncable when a message is created
 const showMessageToDom = (message) => {
   const list = document.querySelector('#message-list')
-  list.insertAdjacentHTML('beforeend', `<li> ${message.content} <button data-message-id="${message.id}" class="btn delete-btn btn-danger"> Delete </button></li>`)
+  list.insertAdjacentHTML('beforeend', `<li> ${message.content} </li>`)
 }
 
 const deleteMessage = () => {
