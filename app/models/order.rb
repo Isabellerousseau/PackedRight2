@@ -19,6 +19,9 @@ class Order < ApplicationRecord
 
   before_save :geocode, if: :will_save_change_to_drop_off?
 
+  def notify_driver
+    ActionCable.server.broadcast("driver_#{self.driver.id}", message: {content: 'top!'})
+  end
 end
 # order has two reviews.... moest het dan has_many? of....
 # pickup location drop- off location

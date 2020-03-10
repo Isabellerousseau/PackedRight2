@@ -6,7 +6,9 @@ import {
   createMessage,
   deleteMessage
 } from '../plugins/messages';
+
 import { initChatChannel } from '../channels/chat_channel';
+import { initDriverChannel } from '../channels/driver_channel';
 
 initMapbox();
 
@@ -15,3 +17,4 @@ createMessage();
 deleteMessage();
 
 initChatChannel();
+initDriverChannel();
