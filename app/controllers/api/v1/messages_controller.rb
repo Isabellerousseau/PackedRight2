@@ -6,15 +6,18 @@ class Api::V1::MessagesController < Api::V1::ApiController
 
   def create
     @message = Message.new(message_params)
-    @message.user = current_user
     @order = Order.find(params[:order_id])
-    @message.order = @order
-    @driver = @order.driver
-    @message.driver = @driver
 
-    authorize @message
+    @message.order_id = params[:order_id]
 
-    if @message.save
+    if params[:is_driver]
+      @message.messageable = @order.driver
+    else
+      @message.messageable = current_user
+    end
+
+    if @message.save!
+      authorize @message
       render :show, status: :created
     end
   end

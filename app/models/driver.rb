@@ -5,6 +5,9 @@ class Driver < ApplicationRecord
   has_many :deliveries, through: :orders
   has_many :parcels, through: :orders
 
+  has_many :messages, as: :messageable
+
+  # has_many :messages
 
   CATEGORY = %w[Bike Car Van].freeze
   enum category: CATEGORY

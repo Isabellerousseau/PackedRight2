@@ -7,9 +7,15 @@ class User < ApplicationRecord
   has_many :deliveries, through: :orders
   has_many :parcels
   has_many :reviews, through: :orders
+  has_many :messages, as: :messageable
   has_one :driver
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+
+  def is_driver?
+    !driver.nil?
+  end
 
   private
 

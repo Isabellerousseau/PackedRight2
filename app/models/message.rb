@@ -1,7 +1,10 @@
 class Message < ApplicationRecord
-  belongs_to :driver, optional: true
-  belongs_to :user
+  # belongs_to :driver, optional: true
+  # belongs_to :user
   belongs_to :order
+
+  belongs_to :messageable, polymorphic: true
+
   validates :content, presence: true
 
   after_create :broadcast_message

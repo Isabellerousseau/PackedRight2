@@ -11,7 +11,11 @@
   <%= render 'shared/navbar-new' %>
 </div>
 
-<div id="messages-box" data-order-id="<%= @order.id %>">
+<div
+  id="messages-box"
+  data-order-id="<%= @order.id %>"
+  data-is-driver="<%= current_user.is_driver? %>"
+>
   <%= render 'shared/accordion-messages' %>
 </div>
 </div>
