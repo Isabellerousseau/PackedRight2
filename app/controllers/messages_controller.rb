@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message =Message.new(message_params)
+    @message = Message.new(message_params)
     @message.user = current_user
     @order = Order.find(params[:order_id])
     @message.order = @order
