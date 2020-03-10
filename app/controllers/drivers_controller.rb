@@ -76,7 +76,10 @@ class DriversController < ApplicationController
     end
   end
 
-
+  def driving
+    @driver = current_user.driver
+    authorize @driver
+  end
 
   private
 

@@ -66,6 +66,7 @@ end
 def select_driver(order)
   order.driver = Driver.where(category: order.category).near(order.pickup).first
   order.save
+  order.notify_driver
 end
 
 # Sorry Isabelle
