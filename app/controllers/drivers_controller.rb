@@ -79,6 +79,8 @@ class DriversController < ApplicationController
   def driving
     @driver = current_user.driver
     authorize @driver
+
+    set_markers
   end
 
   private

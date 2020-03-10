@@ -5,13 +5,12 @@ const initDriverChannel = () => {
   console.log('stqrting')
   const driverBox = document.querySelector('#driver-box')
 
-  if (messageBox) {
+  if (driverBox) {
     console.log('connected')
     createChannel(
-      { channel: "DriverChannel", driver_id: messageBox.dataset.driverId },
+      { channel: "DriverChannel", driver_id: driverBox.dataset.driverId },
       {
         received({ message }) {
-          console.log('got notificqtion')
           showNotificationToDom(message)
         }
       }
