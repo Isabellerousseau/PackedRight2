@@ -27,4 +27,7 @@ class DriverPolicy < ApplicationPolicy
     record.user == user
   end
 
+  def driving?
+    !!user
+  end
 end
