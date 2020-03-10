@@ -19,6 +19,7 @@ gem 'pundit'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'geocoder'
 gem 'cloudinary', '~> 1.12.0'
+gem 'postmark-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -31,4 +32,5 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem "letter_opener"
 end
