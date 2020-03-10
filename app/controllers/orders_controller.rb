@@ -1,8 +1,6 @@
 class OrdersController < ApplicationController
   def index
     @orders = policy_scope(Order).order(created_at: :desc)
-    # @upcomingorder = Order.where(Time.zone.now < DateTime.current)
-    # @pastorder = Order.where(Time.zone.now >= DateTime.current).order(:desc)
   end
 
   def new
