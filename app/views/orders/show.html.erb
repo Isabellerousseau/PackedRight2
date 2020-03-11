@@ -12,7 +12,7 @@
   <%= render 'shared/navbar-new' %>
   </div>
 
-  <% if current_user.driver.id == @order.driver.id %>
+  <% if current_user.driver&.id == @order.driver&.id %>
     <div>
       <%= form_tag order_path(@order), method: 'patch' do %>
         <%= hidden_field_tag 'order[status]', "delivered" %>
