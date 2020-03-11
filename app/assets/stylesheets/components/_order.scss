@@ -1,0 +1,8 @@
+.order-review {
+  transition: height 150ms ease-in;
+  overflow: hidden;
+  height: 0;
+}
+.order-review.show {
+  height: 75px;
+}
