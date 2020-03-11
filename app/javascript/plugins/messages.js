@@ -43,6 +43,10 @@ const createMessage = () => {
           is_driver: isDriver
         })
       })
+        .then(() => {
+          form.querySelector('#submit-btn').disabled = false
+          input.value = ""
+        })
     });
   }
 }

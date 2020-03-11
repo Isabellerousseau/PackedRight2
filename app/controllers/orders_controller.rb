@@ -19,7 +19,8 @@ class OrdersController < ApplicationController
 
     authorize @order
     if @order.save
-      select_driver(@order)
+      @order.select_driver
+      # select_driver(@order)
       redirect_to order_path(@order)
     else
       p @order.errors
@@ -59,12 +60,6 @@ private
 
 def order_params
   params.require(:order).permit(:pickup, :drop_off, :pickup_time, :driver_id, parcel_attributes: [:name, :weight, :category, :fragile])
-end
-
-def select_driver(order)
-  order.driver = Driver.where(category: order.category).near(order.pickup).first
-  order.save
-  order.notify_driver
 end
 
 # Sorry Isabelle
