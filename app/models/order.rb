@@ -22,7 +22,6 @@ class Order < ApplicationRecord
   def select_driver
     self.driver = Driver.where(category: category).near(pickup).first
     self.save
-    byebug
     self.notify_driver
   end
 
