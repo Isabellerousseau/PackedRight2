@@ -31,9 +31,6 @@
   <body>
 
     <%= render 'shared/flashes' %>
-    <% unless user_signed_in? %>
-      <%= render 'shared/overlay' %>
-    <% end %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
