@@ -19,7 +19,12 @@ class Order < ApplicationRecord
 
   before_save :geocode, if: :will_save_change_to_drop_off?
 
-  after_create :notify_driver
+  def select_driver
+    self.driver = Driver.where(category: category).near(pickup).first
+    self.save
+    byebug
+    self.notify_driver
+  end
 
   def notify_driver
     ActionCable.server.broadcast("driver_#{self.driver.id}", message: {content: 'top!'})

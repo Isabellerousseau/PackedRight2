@@ -40,6 +40,10 @@ const createMessage = () => {
           }
         })
       })
+        .then(() => {
+          form.querySelector('#submit-btn').disabled = false
+          input.value = ""
+        })
     });
   }
 }
