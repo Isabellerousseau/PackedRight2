@@ -6,8 +6,7 @@ class DeliveryMailer < ApplicationMailer
   #   en.delivery_mailer.confirmation.subject
   #
   def confirmation
-    @delivery = Delivery.find params[:delivery_id]
-    @order = @delivery.order
+    @order = Order.find params[:order_id]
 
     @greeting = "Hi"
 

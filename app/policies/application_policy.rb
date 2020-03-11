@@ -38,6 +38,10 @@ class ApplicationPolicy
     false
   end
 
+  def delivered?
+    false
+  end
+
   class Scope
     attr_reader :user, :scope
 
