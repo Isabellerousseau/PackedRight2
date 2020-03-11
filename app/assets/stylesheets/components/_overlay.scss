@@ -1,6 +1,7 @@
 .overlay {
-  background-color: black;
-  opacity: 70%;
+  background-image: url("delivery.jpeg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
   height: 100vh;
   width: 100vw;
   position: absolute;
