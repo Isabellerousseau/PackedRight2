@@ -19,10 +19,9 @@ class Driver < ApplicationRecord
   before_save :geocode, if: :will_save_change_to_address?
 
   def available?
-    if self.orders == [] && self.active == true
-      true
-    else
-      false
-    end
+    !self.orders.where(status: 'in_progress').any? && self.active
   end
 end
+
+
+# id self.order = nil ipv

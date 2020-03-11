@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     authorize @order
     @order.update(order_params)
-    redirect_to root
+    redirect_to root_path
   end
 
   def destroy
@@ -59,7 +59,7 @@ end
 private
 
 def order_params
-  params.require(:order).permit(:pickup, :drop_off, :pickup_time, :driver_id, parcel_attributes: [:name, :weight, :category, :fragile])
+  params.require(:order).permit(:pickup, :drop_off, :pickup_time, :driver_id, :status, parcel_attributes: [:name, :weight, :category, :fragile])
 end
 
 # Sorry Isabelle

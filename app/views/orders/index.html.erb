@@ -2,14 +2,22 @@
   <%= render 'shared/navbar-new' %>
   <h1 class="mt-5 mb-5">All my orders</h1>
   <% current_user.orders.each do |order| %>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= order.parcel.name.capitalize %></h5>
+      <h6 class="card-subtitle mb-2 text-muted">From <%= order.pickup.capitalize %> to <%= order.drop_off.capitalize %></h6>
+      <p class="card-text"><%= "#{order.driver ? "Driver: #{order.driver.user.name}" : 'we are looking for a driver'}"%></p>
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+
   <div class="card-product mt-2">
     <div class="card-product-infos">
       <ul class="listStyle">
-        <li><b><%= order.parcel.name.capitalize %></b></li>
-        <li><i><%= "Driver: #{order.driver ? order.driver.user.name : 'we are looking for a driver'}"%></i></li>
-        <li><%= "Pickup: #{order.pickup.capitalize}"%></li>
+        <li><b></b></li>
         <li><%= "Pickup time: #{order.pickup_time}"%></li>
-        <li><%= "Drop-off: #{order.drop_off.capitalize}"%></li>
         <li><%= "Status: #{order.status}"%></li>
         <div>
           <% if order.review %>
@@ -18,7 +26,7 @@
           <span class="glyphicon glyphicon-star"> <i class="fas fa-star"></i></span>
           <% end %>
           <% order.review.blank_stars.to_i.times do %>
-            <i class="far fa-star"></i>
+          <i class="far fa-star"></i>
           <% end %>
           <% elsif order.driver %>
           <li><%= link_to "Add a review for #{order.driver.user.name}", new_order_review_path(order)%></li>

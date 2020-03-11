@@ -83,6 +83,14 @@ class DriversController < ApplicationController
     set_markers
   end
 
+  def delivered
+    @order = Order.find(params[:id])
+    authorize @order
+    driver = @order.driver
+    driver.order = nil
+    driver.save
+  end
+
   private
 
   def driver_params
