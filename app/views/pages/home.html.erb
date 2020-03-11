@@ -1,15 +1,14 @@
 <div class="homePage">
-<div
-class="positionmap"
-id="map"
-data-markers="<%= @markers.to_json %>"
-data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
->
-  <%= render 'shared/navbar-new' %>
-</div>
+  <div
+  class="positionmap"
+  id="map"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  >
+    <%= render 'shared/navbar-new' %>
+  </div>
 
-  <div class="container">
-    <h1 class="cursive"><%= @greet %><% if current_user %> <%= current_user.name %></h1>
+  <% unless user_signed_in? %>
+    <%= render 'shared/overlay' %>
   <% end %>
 </div>
-  </div>

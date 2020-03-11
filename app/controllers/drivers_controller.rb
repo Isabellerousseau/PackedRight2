@@ -38,7 +38,7 @@ class DriversController < ApplicationController
     @driver = policy_scope(Driver).find(params[:id])
     @driver.update(driver_params)
     authorize @driver
-    redirect_to drivers_path
+    redirect_to root_path
   end
 
   def destroy

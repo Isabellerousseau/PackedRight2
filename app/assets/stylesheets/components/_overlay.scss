@@ -1,0 +1,26 @@
+.overlay {
+  background-image: url("delivery.jpeg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  .overlay_text {
+    color: white;
+    position: absolute;
+    width: 80%;
+    height: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.skewed {
+  transform: rotate(-15deg);
+}
