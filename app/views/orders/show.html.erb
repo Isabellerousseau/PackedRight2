@@ -15,8 +15,9 @@
   <div>
     <%= form_tag order_path(@order), method: 'patch' do %>
       <%= hidden_field_tag 'order[status]', "delivered" %>
-      <%= submit_tag 'Package delivered!', class: 'btn btn-primary' %>
+      <%= submit_tag 'Package delivered!', class: 'btn btn-primary delivered-btn' %>
     <% end %>
+
   </div>
 
 </div>
