@@ -1,3 +1,4 @@
+<div class="homePage">
 <div
 class="positionmap"
 id="map"
@@ -7,7 +8,8 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   <%= render 'shared/navbar-new' %>
 </div>
 
-<div class="container">
+  <div class="container">
     <h1 class="cursive"><%= @greet %><% if current_user %> <%= current_user.name %></h1>
   <% end %>
 </div>
+  </div>
