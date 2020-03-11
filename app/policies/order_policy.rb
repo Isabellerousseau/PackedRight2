@@ -24,4 +24,8 @@ class OrderPolicy < ApplicationPolicy
   def update?
     !!user
   end
+
+  def delivered?
+    !!user
+  end
 end

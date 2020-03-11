@@ -13,7 +13,10 @@
   </div>
 
   <div>
-  <%= link_to('Package Safely Delivered!', orders_path, :class => 'btn btn-primary') %>
+    <%= form_tag order_path(@order), method: 'patch' do %>
+      <%= hidden_field_tag 'order[status]', "delivered" %>
+      <%= submit_tag 'Package delivered!', class: 'btn btn-primary' %>
+    <% end %>
   </div>
 
 </div>
