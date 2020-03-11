@@ -52,10 +52,18 @@ const createMessage = () => {
 }
 
 // function called by actioncable when a message is created
-const showMessageToDom = (message) => {
-  console.log('Message: ', message)
+const showMessageToDom = ({ content, messageable_type }) => {
+  const classByType = {
+    'User': 'user-message',
+    'Driver': 'driver-message'
+  }
+
   const list = document.querySelector('#message-list')
-  list.insertAdjacentHTML('beforeend', `<li> ${message.content} </li>`)
+  list.insertAdjacentHTML('beforeend', `<div class="${classByType[messageable_type]}">
+            <span class="message">
+              ${content}
+            </span>
+          </div>`)
 }
 
 const deleteMessage = () => {

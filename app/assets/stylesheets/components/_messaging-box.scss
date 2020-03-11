@@ -13,11 +13,14 @@
     display: flex;
     justify-content: flex-end;
 
+
   }
 
   .message {
     border: 1px solid gray;
-    border-radius: 30px
+    border-radius: 30px;
+    padding: 5px 27px;
+    margin: 3px 0;
 
   }
 }
