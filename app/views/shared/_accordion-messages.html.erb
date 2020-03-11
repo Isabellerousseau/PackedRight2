@@ -3,7 +3,7 @@
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link width100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <% if current_user.driver.id == @order.driver.id %>
+          <% if current_user.driver&.id == @order.driver&.id %>
             Message your costumer!
           <% elsif current_user.id == @order.user_id %>
             Message your driver!
