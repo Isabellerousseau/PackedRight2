@@ -1,9 +1,26 @@
 
-#messages-window{
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  height: 300px;
-  width: 250px;
-  background: white;
+
+#message-list {
+  display: flex;
+  flex-direction: column;
+
+  .driver-message {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .user-message {
+    display: flex;
+    justify-content: flex-end;
+
+
+  }
+
+  .message {
+    border: 1px solid gray;
+    border-radius: 30px;
+    padding: 5px 27px;
+    margin: 3px 0;
+
+  }
 }

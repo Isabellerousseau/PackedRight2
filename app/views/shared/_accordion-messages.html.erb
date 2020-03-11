@@ -3,6 +3,7 @@
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
         <button class="btn btn-link width100" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+
           <% if current_user.driver&.id == @order.driver&.id %>
             Message your costumer!
           <% elsif current_user.id == @order.user_id %>
@@ -16,9 +17,18 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
         <%= render 'messages/form' %>
-        <ul id="message-list">
-
-        </ul>
+        <div id="message-list">
+          <div class="driver-message">
+            <span class="message">
+              Salut
+            </span>
+          </div>
+          <div class=" user-message">
+            <span class="message">
+              Hola
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
