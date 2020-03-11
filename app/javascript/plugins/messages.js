@@ -28,6 +28,8 @@ const createMessage = () => {
     form.addEventListener("submit", (event) => {
       event.preventDefault()
 
+      const isDriver = messageBox.dataset.isDriver === 'true'
+
       fetch(`/api/v1/orders/${orderId}/messages`, {
         method: 'POST',
         headers: {
@@ -37,7 +39,8 @@ const createMessage = () => {
           message: {
             content: input.value
             // We are using value here to access the input
-          }
+          },
+          is_driver: isDriver
         })
       })
     });
@@ -46,6 +49,7 @@ const createMessage = () => {
 
 // function called by actioncable when a message is created
 const showMessageToDom = (message) => {
+  console.log('Message: ', message)
   const list = document.querySelector('#message-list')
   list.insertAdjacentHTML('beforeend', `<li> ${message.content} </li>`)
 }
