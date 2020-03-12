@@ -11,7 +11,7 @@
     <button class="dropdown-item" type="button"><%= link_to "New order",  new_order_path %></button>
     <button class="dropdown-item" type="button"><% if policy(Order).create? %><%= link_to "Your orders", orders_path %><% end %></button>
     <button class="dropdown-item" type="button"></button>
-    <% if current_user.driver == nil %>
+    <% if current_user&.driver == nil %>
       <button class="dropdown-item" type="button"><%=link_to "Become a driver", new_driver_path %></button>
     <% end %>
     <button class="dropdown-item" type="button"><% if policy(User).edit? %><%= link_to "Update profile", edit_user_registration_path %><% end %></button>
