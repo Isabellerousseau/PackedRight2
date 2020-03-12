@@ -8,28 +8,35 @@
       </h5>
     </div>
 
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-sm-12 offset-sm-12">
+
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
 
 
-        <%= simple_form_for @order do |f| %>
-        <%= f.input :pickup, label: false, placeholder: 'Please enter the pickup location' %>
-        <%= f.input :drop_off, label: false, placeholder: 'Please enter the drop-off location' %>
-        <%= f.input :pickup_time, label: false, placeholder: 'When should we pick it up?' %>
-        <%= f.fields_for :parcel do |pf| %>
-        <%= pf.input :name,label: false,  placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>
-        <%= pf.input :weight, label: false, placeholder: 'Please enter the weight of your parcel' %>
-        <%= pf.input :category, label: false, collection: Parcel::CATEGORY %>
-        <%= pf.input :fragile, as: :boolean %>
-        <% end %>
-        <div class="btn btn-primary">
-          <%= f.button :submit %>
+          <%= simple_form_for @order do |f| %>
+          <%= f.input :pickup, label: false, placeholder: 'Please enter the pickup location' %>
+          <%= f.input :drop_off, label: false, placeholder: 'Please enter the drop-off location' %>
+          <%= f.input :pickup_time, label: false, placeholder: 'When should we pick it up?' %>
+          <%= f.fields_for :parcel do |pf| %>
+          <%= pf.input :name,label: false,  placeholder: 'Product name please', error: 'Product name is mandatory, please specify one' %>
+          <%= pf.input :weight, label: false, placeholder: 'Please enter the weight of your parcel' %>
+          <%= pf.input :category, label: false, collection: Parcel::CATEGORY %>
+          <%= pf.input :fragile, as: :boolean %>
+          <% end %>
+          <div class="btn btn-primary">
+            <%= f.button :submit %>
+          </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
     </div>
   </div>
-</div>
 
 <!-- optie voor label html -->
 <!-- label_html: { class: } kan ook met input en wrapper-->
+    </div>
+  </div>
+</div>

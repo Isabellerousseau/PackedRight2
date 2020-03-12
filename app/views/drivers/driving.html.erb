@@ -16,7 +16,7 @@
 </div>
 
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#driver_modal" id="modalbtn">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#driver_modal" id="modalbtn" hidden>
   Launch demo modal
 </button>
 <!-- Modal -->
@@ -30,15 +30,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <p> Parcel: <%= @driver.orders.last.parcel.name %></p>
-        <p>Pickup location:<%= @driver.orders.last.pickup %></p>
-        <p>Drop-off location<%= @driver.orders.last.drop_off %></p>
-        <p>Is it fragile?: <%= @driver.orders.last.parcel.fragile %></p>
+        <p> Parcel: <%= @driver.orders&.last&.parcel&.name %></p>
+        <p>Pickup location:<%= @driver.orders&.last&.pickup %></p>
+        <p>Drop-off location<%= @driver.orders&.last&.drop_off %></p>
+        <p>Is it fragile?: <%= @driver.orders&.last&.parcel&.fragile %></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" href='./orders/' >Save changes</button>
-        <%= link_to 'GO!', order_path(@driver.orders.last), :class => 'btn btn-primary' %>
+        <% if !@driver.orders.empty? %>
+          <%= link_to 'GO!', order_path(@driver.orders&.last), :class => 'btn btn-primary' %>
+        <% end %>
       </div>
     </div>
   </div>
