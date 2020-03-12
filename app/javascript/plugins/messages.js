@@ -25,7 +25,9 @@ const pullMessages = () => {
 // create new message
 const createMessage = () => {
   if (messageBox) {
-    form.addEventListener("submit", (event) => {
+    const button = document.querySelector('#new-message-button')
+    button.addEventListener("click", (event) => {
+      console.log('click')
       event.preventDefault()
 
       const isDriver = messageBox.dataset.isDriver === 'true'

@@ -37,7 +37,7 @@ class Order < ApplicationRecord
   end
 
   def notify_driver
-    ActionCable.server.broadcast("driver_#{self.driver.id}", message: {name: self.parcel.name, pickup: self.pickup, drop_off: self.drop_off, fragile: self.parcel.fragile ? 'yes' : 'no'})
+    ActionCable.server.broadcast("driver_#{self.driver.id}", message: { order: self.id, name: self.parcel.name, pickup: self.pickup, drop_off: self.drop_off, fragile: self.parcel.fragile ? 'yes' : 'no'})
   end
 
   def notify_user

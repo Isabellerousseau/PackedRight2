@@ -7,6 +7,7 @@ const showNotificationToDom = (message) => {
         <p><strong>Is it fragile?:</strong>
           ${message.fragile}</p>`
 
+  modal.querySelector('.modal-footer').insertAdjacentHTML('beforeend', `<a href="/orders/${message.order}" class="btn btn-primary"> GO </a>`)
   document.querySelector("#modalbtn").click()
 }
 
