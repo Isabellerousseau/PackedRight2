@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     authorize @order
     @order.destroy
-  # redirect_to root
+    redirect_to orders_path
 end
 
 def show
