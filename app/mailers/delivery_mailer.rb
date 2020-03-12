@@ -10,6 +10,6 @@ class DeliveryMailer < ApplicationMailer
 
     @greeting = "Hi"
 
-    mail to: "to@example.org"
+    mail to: @order.user.email
   end
 end
