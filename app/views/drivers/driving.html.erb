@@ -29,8 +29,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <p> <strong>Parcel:</strong> <%= @driver.orders&.last&.parcel&.name.capitalize%>()</p>
-        <p><strong>Pickup location:</strong> <%= @driver.orders&.last&.pickup.capitalize %></p>
+        <p> <strong>Parcel:</strong> <%= @driver.orders&.last&.parcel&.name&.capitalize%>()</p>
+        <p><strong>Pickup location:</strong> <%= @driver.orders&.last&.pickup&.capitalize %></p>
         <p><strong>Drop-off location:</strong> <%= @driver.orders&.last&.drop_off %></p>
         <p><strong>Is it fragile?:</strong>
           <%= if @driver.orders&.last&.parcel&.fragile == false
