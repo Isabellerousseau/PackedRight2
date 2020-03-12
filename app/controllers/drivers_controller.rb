@@ -21,7 +21,6 @@ class DriversController < ApplicationController
   def create
     @driver = Driver.new(driver_params)
     authorize @driver
-
     if @driver.save
       redirect_to root_path
     else
