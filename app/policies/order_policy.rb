@@ -25,6 +25,10 @@ class OrderPolicy < ApplicationPolicy
     !!user
   end
 
+  def destroy?
+    !!user
+  end
+
   def delivered?
     !!user
   end
