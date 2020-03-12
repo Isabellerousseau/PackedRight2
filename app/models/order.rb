@@ -19,12 +19,15 @@ class Order < ApplicationRecord
   geocoded_by :drop_off
   before_save :geocode, if: :will_save_change_to_drop_off?
 
+  # before_save :set_dummy_coords, if: :will_save_change_to_pickup?
+  # before_save :set_dummy_coords, if: :will_save_change_to_drop_off?
+
   before_save :send_delivery_confirmation, if: :will_save_change_to_status?
-  before_save :select_driver, if: :will_save_change_to_driver_id?
+  after_create :select_driver
 
   def select_driver
-    if !self.driver_id.nil?
-      self.driver = Driver.available_drivers(category, pickup)
+    if self.driver_id.nil?
+      self.driver_id = Driver.available_drivers(category, pickup).id
       self.status = 'in_progress'
       self.save
       self.notify_driver
@@ -43,6 +46,11 @@ class Order < ApplicationRecord
 
   def send_delivery_confirmation
     DeliveryMailer.with(order_id: self.id).confirmation.deliver_now if (self.status == 'delivered')
+  end
+
+  def set_dummy_coords
+    self.latitude = 51.55847
+    self.longitude = 5.083076
   end
 end
 # order has two reviews.... moest het dan has_many? of....
