@@ -21,6 +21,10 @@ class Driver < ApplicationRecord
   def available?
     !self.orders.where(status: 'in_progress').any? && self.active
   end
+
+  def self.available_drivers(category, pickup)
+    where(category: category).near(pickup).find{|d| d.available? }
+  end
 end
 
 

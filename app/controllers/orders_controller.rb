@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
 
     authorize @order
     if @order.save
-      @order.select_driver
       # select_driver(@order)
       redirect_to order_path(@order)
     else

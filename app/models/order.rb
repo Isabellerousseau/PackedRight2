@@ -20,16 +20,25 @@ class Order < ApplicationRecord
   before_save :geocode, if: :will_save_change_to_drop_off?
 
   before_save :send_delivery_confirmation, if: :will_save_change_to_status?
+  before_save :select_driver, if: :will_save_change_to_driver_id?
 
   def select_driver
-    self.driver = Driver.where(category: category).near(pickup).first
-    self.status = 'in_progress'
-    self.save
-    self.notify_driver
+    if !self.driver_id.nil?
+      self.driver = Driver.available_drivers(category, pickup)
+      self.status = 'in_progress'
+      self.save
+      self.notify_driver
+    else
+      self.notify_user
+    end
   end
 
   def notify_driver
-    ActionCable.server.broadcast("driver_#{self.driver.id}", message: {content: 'WORK'})
+    ActionCable.server.broadcast("driver_#{self.driver.id}", message: {content: 'order_received'})
+  end
+
+  def notify_user
+    ActionCable.server.broadcast("chat_#{self.id}", error: {content: "I'm sorry we haven't found a driver for you yet."})
   end
 
   def send_delivery_confirmation
