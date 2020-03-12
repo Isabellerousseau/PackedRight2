@@ -34,9 +34,9 @@
       <%  if current_user.driver != nil %>
       <div id="active", class="dropdown-item" type="button" >
         <% if current_user.driver&.active? %>
-         <%= link_to('deactivate', drivers_inactive_path, method: :patch, :class => 'btn btn-primary', :id => 'active', remote: true) %>
+         <%= link_to('deactivate', drivers_inactive_path, method: :patch, :class => 'btn btn-primary', :id => 'active') %>
         <% else %>
-          <%= link_to('activate', drivers_active_path, method: :patch, :class => 'btn btn-primary', :id => 'active', remote: true) %>
+          <%= link_to('activate', drivers_active_path, method: :patch, :class => 'btn btn-primary', :id => 'active') %>
         <% end %>
       </div>
       <% end %>

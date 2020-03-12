@@ -61,6 +61,7 @@ class DriversController < ApplicationController
     @driver.save
     respond_to do |format|
       format.js
+      format.html { redirect_to drivers_driving_path }
     end
   end
     #driver can set in their settings if they are active or not (add to update driver)
@@ -72,6 +73,7 @@ class DriversController < ApplicationController
     @driver.save
     respond_to do |format|
       format.js
+      format.html { redirect_to new_order_path }
     end
   end
 
