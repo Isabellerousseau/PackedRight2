@@ -59,7 +59,7 @@ Rails.application.configure do
     'http://packedright.live',
     'https://packedright.live'
     'http://www.packedright.live',
-    'https://www.packedright.live',
+    'https://www.packedright.live'
   ]
 
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
