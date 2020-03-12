@@ -52,7 +52,7 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   config.web_socket_server_url = "wss://packed-right-2.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['http://packed-right-2.herokuapp.com', 'https://packed-right-2.herokuapp.com', 'http://packedright.live', 'https://packedright.live']
+  config.action_cable.allowed_request_origins = ['http://packed-right-2.herokuapp.com', 'https://packed-right-2.herokuapp.com', 'http://packedright.live', 'http://www.packedright.live','https://packedright.live']
 
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
