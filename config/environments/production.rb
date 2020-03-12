@@ -57,7 +57,7 @@ Rails.application.configure do
     'http://packed-right-2.herokuapp.com',
     'https://packed-right-2.herokuapp.com',
     'http://packedright.live',
-    'https://packedright.live'
+    'https://packedright.live',
     'http://www.packedright.live',
     'https://www.packedright.live'
   ]
