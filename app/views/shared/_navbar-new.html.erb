@@ -4,11 +4,10 @@
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
     <button class="dropdown-item" type="button">
-      <%= cl_image_tag @photo, class: 'avatar-large' %>
-      <%= @greet %>
-      <%= current_user&.name %>
+      <%= cl_image_tag @photo, class: 'avatar-large mt-2 mb-2' %>
+      <p><i><%= "#{@greet} #{current_user&.name}"%></i></p>
     </button>
-    <button class="dropdown-item" type="button"><%= link_to "Home",  root_path %></button>
+    <button class="dropdown-item" type="button"><%= link_to "Home",  root_path  %></button>
     <button class="dropdown-item" type="button"><%= link_to "New order",  new_order_path %></button>
     <button class="dropdown-item" type="button"><% if policy(Order).create? %><%= link_to "Your orders", orders_path %><% end %></button>
     <button class="dropdown-item" type="button"></button>
@@ -24,11 +23,11 @@
 
       <% if user_signed_in? %>
       <div>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'btn btn-primary') %>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, :class => 'btn btn-dark') %>
       </div>
       <% else %>
       <div>
-        <%= link_to('Login/Sign-up', new_user_session_path, :class => 'btn btn-primary') %>
+        <%= link_to('Login/Sign-up', new_user_session_path, :class => 'btn btn-dark') %>
       </div>
       <% end %></button>
 
@@ -37,12 +36,14 @@
       <%  if current_user.driver != nil %>
       <div id="active", class="dropdown-item" type="button" >
         <% if current_user.driver&.active? %>
-         <%= link_to('deactivate', drivers_inactive_path, method: :patch, :class => 'btn btn-primary', :id => 'active') %>
+
+         <%= link_to('deactivate', drivers_inactive_path, method: :patch, :class => 'btn btn-dark', :id => 'active', remote: true) %>
         <% else %>
-          <%= link_to('activate', drivers_active_path, method: :patch, :class => 'btn btn-primary', :id => 'active') %>
+          <%= link_to('activate', drivers_active_path, method: :patch, :class => 'btn btn-dark', :id => 'active', remote: true) %>
+
         <% end %>
           <div class="logo mt-3 ml-2 mb-3">
-        <%= image_tag 'logo.png', width: 130, height: 80 %>
+        <%= image_tag 'logo.png', width: 150 %>
       </div>
       </div>
       <% end %>

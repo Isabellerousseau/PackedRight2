@@ -3,10 +3,10 @@
   <h1 class="mt-5 mb-5">All my orders</h1>
   <% current_user.orders.each do |order| %>
 
-  <div class="card">
+  <div class="card mt-3">
     <div class="card-body">
       <h5 class="card-title"><%= order.parcel.name.capitalize %></h5>
-      <h6 class="card-subtitle mb-2 mt-2 text-muted">From <%= order.pickup.capitalize %> to <%= order.drop_off.capitalize %></h6>
+      <h6 class="card-subtitle mb-2 text-muted">From <%= order.pickup.capitalize %> to <%= order.drop_off.capitalize %></h6>
       <p class="card-text">
         <%= "#{order.driver ? "Driver: #{order.driver.user.name}" : 'we are looking for a driver'}"%><br>
         <%= order.pickup_time.strftime("%A, %b %d") %>
