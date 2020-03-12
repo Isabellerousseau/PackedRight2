@@ -3,7 +3,7 @@
   <h1 class="mt-5 mb-5">All my orders</h1>
   <% current_user.orders.each do |order| %>
 
-  <div class="card">
+  <div class="card mt-3">
     <div class="card-body">
       <h5 class="card-title"><%= order.parcel.name.capitalize %></h5>
       <h6 class="card-subtitle mb-2 text-muted">From <%= order.pickup.capitalize %> to <%= order.drop_off.capitalize %></h6>
@@ -11,6 +11,8 @@
         <%= "#{order.driver ? "Driver: #{order.driver.user.name}" : 'we are looking for a driver'}"%><br>
         <%= order.pickup_time.strftime("%A, %b %d") %>
         <p><%= "Status: #{order.status}" %></p>
+        <p><% if policy(order).destroy? %><%= link_to "Cancel order", order_path(order.id), method: :delete, data: {confirm: "Are you sure you want to cancel this order?"} %></p>
+        <% end %>
 
       </p>
       <% if order.driver and !order.review %>
@@ -32,15 +34,5 @@
     </div>
   </div>
 
-  <div class="card-product mt-2">
-    <div class="card-product-infos">
-      <% if policy(order).destroy? %><%= link_to order_path(order.id), method: :delete, data: {confirm: "Are you sure you want to cancel this order?"} do%>
-      <i class="fas fa-trash-alt"></i>
-      <% end %>
-      <% end %>
-      <div class="list mt-4">
-      </div>
-    </div>
-  </div>
   <% end %>
 </div>
