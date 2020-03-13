@@ -27,7 +27,8 @@ class Order < ApplicationRecord
 
   def select_driver
     if self.driver_id.nil?
-      self.driver_id = Driver.available_drivers(category, pickup).id
+      self.driver_id = Driver.where(address: "Haarlem").first.id
+      # self.driver_id = Driver.available_drivers(category, pickup).id
       self.status = 'in_progress'
       self.save
       self.notify_driver
@@ -41,11 +42,12 @@ class Order < ApplicationRecord
   end
 
   def notify_user
-    ActionCable.server.broadcast("chat_#{self.id}", error: {content: "I'm sorry we haven't found a driver for you yet."})
+    ActionCable.server.broadcast("chat_#{self.id}", message: {content: "I'm sorry we haven't found a driver for you yet."})
   end
 
   def send_delivery_confirmation
     # DeliveryMailer.with(order_id: self.id).confirmation.deliver_now if (self.status == 'delivered')
+    ActionCable.server.broadcast("chat_#{self.id}", message: {content: "Package delivered"}) if self.status == 'delivered'
   end
 
   def set_dummy_coords

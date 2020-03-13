@@ -22,7 +22,7 @@ class DriversController < ApplicationController
     @driver = Driver.new(driver_params)
     authorize @driver
     if @driver.save
-      redirect_to root_path
+      redirect_to drivers_driving_path
     else
       render :new
     end
@@ -37,7 +37,7 @@ class DriversController < ApplicationController
     @driver = policy_scope(Driver).find(params[:id])
     @driver.update(driver_params)
     authorize @driver
-    redirect_to root_path
+    redirect_to drivers_driving_path
   end
 
   def destroy
