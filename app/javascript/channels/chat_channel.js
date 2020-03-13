@@ -10,7 +10,10 @@ const initChatChannel = () => {
       {
         received({ message }) {
           if (message.content === 'Package delivered') {
-            window.location.replace("/orders")
+            const isDriver = messageBox.dataset.isDriver === 'true'
+            if (isDriver) {
+              window.location.replace("/orders")
+            }
           } else {
             showMessageToDom(message)
           }
