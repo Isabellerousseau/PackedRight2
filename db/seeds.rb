@@ -18,25 +18,110 @@
 #   driver.save!
 # end
 # puts 'Finished!'
-Order.delete_all
-Parcel.delete_all
 Driver.delete_all
 User.delete_all
 
-User.create(email: "ashanti.richardson@gmail.com", created_at: "2020-03-04 10:04:14", updated_at: "2020-03-04 10:04:14", name: nil, phone_number: nil, admin: nil, location: nil, latitude: nil, longitude: nil, password: 'password')
-User.create(email: "Isa@gmail.com", created_at: "2020-04-04 10:04:14", updated_at: "2020-06-04 10:04:14", name: nil, phone_number: nil, admin: nil, location: nil, latitude: nil, longitude: nil, password: 'password')
-User.create(email: "Sara@gmail.com", created_at: "2020-05-04 10:04:14", updated_at: "2020-07-04 10:04:14", name: nil, phone_number: nil, admin: nil, location: nil, latitude: nil, longitude: nil, password: 'password')
-User.create(email: "max@gmail.com", created_at: "2020-06-04 10:04:14", updated_at: "2020-08-04 10:04:14", name: nil, phone_number: nil, admin: nil, location: nil, latitude: nil, longitude: nil, password: 'password')
+user1 = User.create(
+  email: "ashanti.richardson@packedright.live",
+  name: "Ashanti",
+  phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user2 = User.create(
+  email: "isa@packedright.live",
+  name: "Isabelle",
+  phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user3 = User.create(
+  email: "sara@packedright.live",
+  name: "Sara",
+  phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user4 = User.create(
+  email: "max@packedright.live",
+  name: "Max", phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user5 = User.create(
+  email: "abel@packedright.live",
+  name: "Abel", phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user6 = User.create(
+  email: "lily@packedright.live",
+  name: "Lily", phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user7 = User.create(
+  email: "hannah@packedright.live",
+  name: "Hannah", phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user8 = User.create(
+  email: "andrea@packedright.live",
+  name: "Andrea", phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user9 = User.create(
+  email: "simone@packedright.live",
+  name: "Simone", phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
+user10 = User.create(
+  email: "jerome@packedright.live",
+  name: "Jerome", phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
 
-Parcel.create(name: "designer dress", weight: 1, category: "Bike", fragile: true, created_at: "2020-03-04 13:04:21", updated_at: "2020-03-04 13:04:21")
-Parcel.create(name: "mini palmtree", weight: 100, category: "Car", fragile: true, created_at: "2020-04-04 13:04:21", updated_at: "2020-04-04 13:04:21")
-Parcel.create(name: "painting", weight: 10, category: "Van", fragile: true, created_at: "2020-05-04 13:04:21", updated_at: "2020-05-04 13:04:21")
-
-Driver.create(approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-03-04 13:29:54", updated_at: "2020-03-04 13:33:57", user_id: User.first.id, address: "Haarlem", category: "Bike", active: true)
-Driver.create(approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", user_id: User.second.id, address: "Amsterdam", category: "Van", active: true)
-Driver.create(approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", user_id: User.fourth.id, address: "Amsterdam", category: "Car", active: true)
-Driver.create(approved: nil, latitude: 52.3842045, longitude: 4.9029567, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", user_id: User.third.id, address: "Leiden", category: "Bike", active: true)
-
-Order.create(status: nil, category: 0, weight: 1, fragile: true, driver_id: Driver.first.id, user: User.first, parcel: Parcel.first, pickup: "Den Haag", drop_off: "Maastricht", created_at: "2020-03-04 13:04:21", updated_at: "2020-03-04 13:04:21", pickup_time: nil)
-Order.create(status: nil, category: 1, weight: 30, fragile: true, driver_id: Driver.second.id, user: User.second, parcel: Parcel.second, pickup: "Utrecht", drop_off: "Dordrecht", created_at: "2020-04-04 13:04:21", updated_at: "2020-04-04 13:04:21", pickup_time: nil)
-Order.create(status: nil, category: 2, weight: 60, fragile: true, driver_id: Driver.third.id, user: User.third, parcel: Parcel.third, pickup: "Amsterdam", drop_off: "Leiden", created_at: "2020-05-04 13:04:21", updated_at: "2020-05-04 13:04:21", pickup_time: nil)
+Driver.create(users_id: user1.id, approved: nil, latitude: 52.379100, longitude: 4.843040, created_at: "2020-03-04 13:29:54", updated_at: "2020-03-04 13:33:57", address: "Vrouwengelukhof 95, Amsterdam", category: "Bike", active: true)
+Driver.create(users_id: user2.id, approved: nil, latitude: 52.350990, longitude: 4.888490, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", address: "Rustenburgerstraat 435, Amsterdam", category: "Van", active: true)
+Driver.create(users_id: user3.id, approved: nil, latitude: 52.358610, longitude: 4.878530, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", address: "Paulus Potterstraat 50, Amsterdam", category: "Car", active: true)
+Driver.create(users_id: user4.id, approved: nil, latitude: 52.173050, longitude: 4.472020, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Merelstraat 20, Leiden", category: "Car", active: true)
+Driver.create(users_id: user5.id, approved: nil, latitude: 52.197310, longitude: 5.420170, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Ringdijk Bovenkerker Polder 10, Amstelveen", category: "Van", active: true)
+Driver.create(users_id: user6.id, approved: nil, latitude: 52.304200, longitude: 4.694760, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Marktplein 106, Hoofddorp", category: "Van", active: true)
+Driver.create(users_id: user7.id, approved: nil, latitude: 52.361944, longitude: 4.733307, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "IJweg 411, Zwanenburg", category: "Car", active: true)
+Driver.create(users_id: user8.id, approved: nil, latitude: 52.277328, longitude: 4.836940, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Bovenkerkerweg 81, Amstelveen", category: "Van", active: true)
+Driver.create(users_id: user9.id, approved: nil, latitude: 52.377810, longitude: 4.749300, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Dennenlaan 80, Zwanenburg", category: "Bike", active: true)
+Driver.create(users_id: user10.id, approved: nil, latitude: 52.241113, longitude: 4.817964, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Thamerhorn 1, Uithoorn", category: "Car", active: true)
