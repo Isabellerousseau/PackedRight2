@@ -45,7 +45,7 @@ class Order < ApplicationRecord
   end
 
   def send_delivery_confirmation
-    DeliveryMailer.with(order_id: self.id).confirmation.deliver_now if (self.status == 'delivered')
+    # DeliveryMailer.with(order_id: self.id).confirmation.deliver_now if (self.status == 'delivered')
   end
 
   def set_dummy_coords

@@ -18,10 +18,10 @@
 #   driver.save!
 # end
 # puts 'Finished!'
-Order.delete_all
-Parcel.delete_all
-Driver.delete_all
-User.delete_all
+Order.destroy_all
+Parcel.destroy_all
+Driver.destroy_all
+User.destroy_all
 
 User.create(email: "ashanti.richardson@gmail.com", created_at: "2020-03-04 10:04:14", updated_at: "2020-03-04 10:04:14", name: nil, phone_number: nil, admin: nil, location: nil, latitude: nil, longitude: nil, password: 'password')
 User.create(email: "Isa@gmail.com", created_at: "2020-04-04 10:04:14", updated_at: "2020-06-04 10:04:14", name: nil, phone_number: nil, admin: nil, location: nil, latitude: nil, longitude: nil, password: 'password')
