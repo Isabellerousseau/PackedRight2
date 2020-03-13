@@ -5,12 +5,15 @@ const initChatChannel = () => {
   const messageBox = document.querySelector('#messages-box')
 
   if (messageBox) {
-    console.log('connected')
     createChannel(
       { channel: "ChatChannel", order_id: messageBox.dataset.orderId },
       {
         received({ message }) {
-          showMessageToDom(message)
+          if (message.content === 'Package delivered') {
+            window.location.replace("/orders")
+          } else {
+            showMessageToDom(message)
+          }
         }
       }
     )

@@ -18,6 +18,8 @@
 #   driver.save!
 # end
 # puts 'Finished!'
+Order.destroy_all
+Review.destroy_all
 Driver.delete_all
 User.delete_all
 
@@ -114,14 +116,24 @@ user10 = User.create(
   longitude: nil,
   password: 'password'
 )
+user11 = User.create(
+  email: "haarlem@packedright.live",
+  name: "Dave", phone_number: nil,
+  admin: nil,
+  location: nil,
+  latitude: nil,
+  longitude: nil,
+  password: 'password'
+)
 
-Driver.create(users_id: user1.id, approved: nil, latitude: 52.379100, longitude: 4.843040, created_at: "2020-03-04 13:29:54", updated_at: "2020-03-04 13:33:57", address: "Vrouwengelukhof 95, Amsterdam", category: "Bike", active: true)
-Driver.create(users_id: user2.id, approved: nil, latitude: 52.350990, longitude: 4.888490, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", address: "Rustenburgerstraat 435, Amsterdam", category: "Van", active: true)
-Driver.create(users_id: user3.id, approved: nil, latitude: 52.358610, longitude: 4.878530, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", address: "Paulus Potterstraat 50, Amsterdam", category: "Car", active: true)
-Driver.create(users_id: user4.id, approved: nil, latitude: 52.173050, longitude: 4.472020, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Merelstraat 20, Leiden", category: "Car", active: true)
-Driver.create(users_id: user5.id, approved: nil, latitude: 52.197310, longitude: 5.420170, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Ringdijk Bovenkerker Polder 10, Amstelveen", category: "Van", active: true)
-Driver.create(users_id: user6.id, approved: nil, latitude: 52.304200, longitude: 4.694760, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Marktplein 106, Hoofddorp", category: "Van", active: true)
-Driver.create(users_id: user7.id, approved: nil, latitude: 52.361944, longitude: 4.733307, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "IJweg 411, Zwanenburg", category: "Car", active: true)
-Driver.create(users_id: user8.id, approved: nil, latitude: 52.277328, longitude: 4.836940, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Bovenkerkerweg 81, Amstelveen", category: "Van", active: true)
-Driver.create(users_id: user9.id, approved: nil, latitude: 52.377810, longitude: 4.749300, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Dennenlaan 80, Zwanenburg", category: "Bike", active: true)
-Driver.create(users_id: user10.id, approved: nil, latitude: 52.241113, longitude: 4.817964, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Thamerhorn 1, Uithoorn", category: "Car", active: true)
+Driver.create(user_id: user1.id, approved: nil, latitude: 52.379100, longitude: 4.843040, created_at: "2020-03-04 13:29:54", updated_at: "2020-03-04 13:33:57", address: "Vrouwengelukhof 95, Amsterdam", category: "Bike", active: true)
+Driver.create(user_id: user2.id, approved: nil, latitude: 52.350990, longitude: 4.888490, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", address: "Rustenburgerstraat 435, Amsterdam", category: "Van", active: true)
+Driver.create(user_id: user3.id, approved: nil, latitude: 52.358610, longitude: 4.878530, created_at: "2020-04-04 13:29:54", updated_at: "2020-04-04 13:33:57", address: "Paulus Potterstraat 50, Amsterdam", category: "Car", active: true)
+Driver.create(user_id: user4.id, approved: nil, latitude: 52.173050, longitude: 4.472020, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Merelstraat 20, Leiden", category: "Car", active: true)
+Driver.create(user_id: user5.id, approved: nil, latitude: 52.197310, longitude: 5.420170, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Ringdijk Bovenkerker Polder 10, Amstelveen", category: "Van", active: true)
+Driver.create(user_id: user6.id, approved: nil, latitude: 52.304200, longitude: 4.694760, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Marktplein 106, Hoofddorp", category: "Van", active: true)
+Driver.create(user_id: user7.id, approved: nil, latitude: 52.361944, longitude: 4.733307, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "IJweg 411, Zwanenburg", category: "Car", active: true)
+Driver.create(user_id: user8.id, approved: nil, latitude: 52.277328, longitude: 4.836940, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Bovenkerkerweg 81, Amstelveen", category: "Van", active: true)
+Driver.create(user_id: user9.id, approved: nil, latitude: 52.377810, longitude: 4.749300, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Dennenlaan 80, Zwanenburg", category: "Bike", active: true)
+Driver.create(user_id: user10.id, approved: nil, latitude: 52.241113, longitude: 4.817964, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Thamerhorn 1, Uithoorn", category: "Car", active: true)
+Driver.create(user_id: user11.id, approved: nil, latitude: 52.241113, longitude: 4.817964, created_at: "2020-05-04 13:29:54", updated_at: "2020-05-04 13:33:57", address: "Haarlem", category: "Car", active: true)
